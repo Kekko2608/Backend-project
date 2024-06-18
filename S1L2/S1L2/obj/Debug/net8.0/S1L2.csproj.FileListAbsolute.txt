@@ -1,0 +1,14 @@
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\bin\Debug\net8.0\S1L2.exe
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\bin\Debug\net8.0\S1L2.deps.json
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\bin\Debug\net8.0\S1L2.runtimeconfig.json
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\bin\Debug\net8.0\S1L2.dll
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\bin\Debug\net8.0\S1L2.pdb
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\S1L2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\S1L2.AssemblyInfoInputs.cache
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\S1L2.AssemblyInfo.cs
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\S1L2.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\S1L2.dll
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\refint\S1L2.dll
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\S1L2.pdb
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\S1L2.genruntimeconfig.cache
+C:\Users\franc\Desktop\Epicode BE\S1L2\S1L2\obj\Debug\net8.0\ref\S1L2.dll
