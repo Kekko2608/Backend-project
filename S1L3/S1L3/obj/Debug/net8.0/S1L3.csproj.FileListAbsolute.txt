@@ -1,0 +1,15 @@
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\S1L3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\S1L3.AssemblyInfoInputs.cache
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\S1L3.AssemblyInfo.cs
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\S1L3.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\S1L3.sourcelink.json
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\bin\Debug\net8.0\S1L3.exe
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\bin\Debug\net8.0\S1L3.deps.json
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\bin\Debug\net8.0\S1L3.runtimeconfig.json
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\bin\Debug\net8.0\S1L3.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\bin\Debug\net8.0\S1L3.pdb
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\S1L3.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\refint\S1L3.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\S1L3.pdb
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\S1L3.genruntimeconfig.cache
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S1L3\S1L3\obj\Debug\net8.0\ref\S1L3.dll
