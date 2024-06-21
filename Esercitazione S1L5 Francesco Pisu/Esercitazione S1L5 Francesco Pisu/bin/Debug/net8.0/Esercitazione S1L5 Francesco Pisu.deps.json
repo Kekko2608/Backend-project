@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Esercitazione S1L5 Francesco Pisu/1.0.0": {
+        "runtime": {
+          "Esercitazione S1L5 Francesco Pisu.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Esercitazione S1L5 Francesco Pisu/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,15 @@
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.AssemblyInfoInputs.cache
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.AssemblyInfo.cs
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.sourcelink.json
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\bin\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.exe
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\bin\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.deps.json
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\bin\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.runtimeconfig.json
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\bin\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\bin\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.pdb
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\refint\Esercitazione S1L5 Francesco Pisu.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.pdb
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\Esercitazione S1L5 Francesco Pisu.genruntimeconfig.cache
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Esercitazione S1L5 Francesco Pisu\Esercitazione S1L5 Francesco Pisu\obj\Debug\net8.0\ref\Esercitazione S1L5 Francesco Pisu.dll
