@@ -31,7 +31,7 @@ namespace Esercitazione_S1L5_Francesco_Pisu
             string inputData = Console.ReadLine();
 
             Console.WriteLine("Inserisci codice fiscale");
-            string inputCF = Console.ReadLine();
+            string inputCF = Console.ReadLine().ToUpper();
 
             Sesso sessoEnum;
             while (true)
@@ -71,14 +71,13 @@ namespace Esercitazione_S1L5_Francesco_Pisu
 
         public void AgenziaEntrate()
         {
-            Console.WriteLine("=========================================");
             Console.WriteLine("         Agenzia   Entrate               ");
             Console.WriteLine("=========================================");
             Console.WriteLine();
             Console.WriteLine("Scegli un opzione:");
             Console.WriteLine();
-            Console.WriteLine("1| Nuovo contribuente");
-            Console.WriteLine("2| Esci dal programma");
+            Console.Write("1| Nuovo contribuente      ");
+            Console.Write("    2| Esci dal programma");
 
             int Scelta = int.Parse(Console.ReadLine());
 
@@ -133,11 +132,17 @@ namespace Esercitazione_S1L5_Francesco_Pisu
 
             Console.WriteLine();
             Console.WriteLine($"CALCOLO DELL’IMPOSTA DA VERSARE:");
+            Console.WriteLine();
             Console.WriteLine($"Contribuente: {contribuente.Nome} {contribuente.Cognome},");
-            Console.WriteLine($"nato il {contribuente.DataNascita} ({contribuente.Sex}),");
-            Console.WriteLine($"residente in {contribuente.ComuneResidenza},");
-            Console.WriteLine($"codice fiscale: {contribuente.CodiceFiscale}");
+            Console.WriteLine();
+            Console.WriteLine($"Nato il {contribuente.DataNascita} ({contribuente.Sex}),");
+            Console.WriteLine();
+            Console.WriteLine($"Residente in {contribuente.ComuneResidenza},");
+            Console.WriteLine();
+            Console.WriteLine($"Codice fiscale: {contribuente.CodiceFiscale}");
+            Console.WriteLine();
             Console.WriteLine($"Reddito dichiarato: EURO {contribuente.RedditoAnnuale}");
+            Console.WriteLine();
             Console.WriteLine($"IMPOSTA DA VERSARE: EURO {contribuente.ImpostaDovuta}");
         }
     }
