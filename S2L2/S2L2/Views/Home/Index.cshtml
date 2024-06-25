@@ -1,0 +1,41 @@
+﻿@using S2L2Console
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model CV
+
+<div class="text-center">
+    <h1 class="display-4">Esercitazione 25_06</h1>
+
+    <h1>Informazioni Personali</h1>
+    <p>Nome: @Model.InformazioniPersonali.Nome</p>
+    <p>Cognome: @Model.InformazioniPersonali.Cognome</p>
+    <p>Email: @Model.InformazioniPersonali.Email</p>
+    <p>Telefono: @Model.InformazioniPersonali.Telefono</p>
+
+    <h1>Studi Effettuati</h1>
+    @foreach (var studi in Model.StudiEffettuati)
+    {
+        <p>Qualifica: @studi.Qualifica</p>
+        <p>Istituto: @studi.Istituto</p>
+        <p>Tipo: @studi.Tipo</p>
+        <p>Dal: @studi.Dal.ToShortDateString()</p>
+        <p>Al: @studi.Al.ToShortDateString()</p>
+    }
+
+    <h2>Esperienze Professionali</h2>
+    @foreach (var impiego in Model.Impieghi)
+    {
+        var esperienza = impiego.Esperienza;
+        <p><strong>Presso:</strong> @esperienza.Azienda</p>
+        <p><strong>Tipo di lavoro:</strong> @esperienza.JobTitle</p>
+        <p><strong>Descrizione:</strong> @esperienza.Descrizione</p>
+        <ul>
+            @foreach (var compito in esperienza.Compiti)
+            {
+                <li>@compito</li>
+            }
+        </ul>
+        <hr />
+    }
+</div>

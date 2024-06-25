@@ -1,0 +1,12 @@
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\bin\Debug\net8.0\S2L2Console.deps.json
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\bin\Debug\net8.0\S2L2Console.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\bin\Debug\net8.0\S2L2Console.pdb
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\S2L2Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\S2L2Console.AssemblyInfoInputs.cache
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\S2L2Console.AssemblyInfo.cs
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\S2L2Console.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\S2L2Console.sourcelink.json
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\S2L2Console.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\refint\S2L2Console.dll
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\S2L2Console.pdb
+C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S2L2\S2L2Console\obj\Debug\net8.0\ref\S2L2Console.dll

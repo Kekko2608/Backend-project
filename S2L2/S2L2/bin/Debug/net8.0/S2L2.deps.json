@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "S2L2/1.0.0": {
+        "dependencies": {
+          "S2L2Console": "1.0.0"
+        },
+        "runtime": {
+          "S2L2.dll": {}
+        }
+      },
+      "S2L2Console/1.0.0": {
+        "runtime": {
+          "S2L2Console.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "S2L2/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "S2L2Console/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
