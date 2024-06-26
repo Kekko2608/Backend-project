@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model HomeViewModel
+
+<div class="container col-8 text-center">
+    <h1>Vendita Biglietti Cinema</h1>
+
+    <form method="post" asp-action="Prenota">
+        <div class="form-group">
+            <label>Nome:</label>
+            <input type="text" name="nome" class="form-control" required />
+        </div>
+        
+        <br />
+        <div class="form-group">
+            <label>Cognome:</label>
+            <input type="text" name="cognome" class="form-control" required />
+        </div>
+        
+        <br />
+        <div class="form-group">
+            <label>Sala:</label>
+            <select name="sala" class="form-control">
+                @foreach (var sala in Model.Sale)
+                {
+                    <option value="@sala.Nome">@sala.Nome</option>
+                }
+            </select>
+        </div>
+        
+        <br />
+        <div class="form-group">
+            <label>Tipo di Biglietto:</label>
+            <select name="isRidotto" class="form-control">
+                <option value="false">Intero</option>
+                <option value="true">Ridotto</option>
+            </select>
+        </div>
+        
+        <br />
+        <button type="submit" class="btn btn-primary">Prenota</button>
+    </form>
+
+    <h2>Riepilogo Sale</h2>
+    <ul>
+        @foreach (var sala in Model.Sale)
+        {
+            <li>
+                @sala.Nome - Posti Occupati: @sala.PostiOccupati / @sala.PostiTotali (Ridotti: @sala.PostiRidotti)
+            </li>
+        }
+    </ul>
+
+    <h2>Elenco Utenti</h2>
+    <ul>
+        @foreach (var user in Model.Users)
+        {
+            <li>@user.Nome @user.Cognome - @user.Sala (@(user.IsRidotto ? "Ridotto" : "Intero"))</li>
+        }
+    </ul>
+</div>
