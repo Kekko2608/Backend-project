@@ -5,7 +5,7 @@
 }
 
 <h2 class="fw-bold fst-italic">+ Aggiungi nuovo annuncio +</h2>
-<a href="@Url.Action("Create")" class="btn btn-primary mb-4">Crea nuovo annuncio</a>
+<a href="@Url.Action("Create")" class="btn btn-warning mb-4">Crea nuovo annuncio</a>
 
 <h2 class="my-4">Scarpe DISPONIBILI</h2>
 <div class="row">
@@ -17,7 +17,7 @@
                 {
                     <img src="@Url.Content(ViewBag.Cover)" class="card-img-top" alt="Cover Image" style="height: 200px; object-fit: cover;" />
                 }
-                <div class="card-body">
+                <div class="card-body text-black">
                     <h5 class="card-title">@product.Name</h5>
                     <p class="card-text">@product.Price.ToString("C")</p>
                     <div class="d-flex justify-content-between align-items-center">
