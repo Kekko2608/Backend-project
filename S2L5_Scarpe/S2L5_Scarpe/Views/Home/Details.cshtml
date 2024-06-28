@@ -1,0 +1,68 @@
+﻿@model S2L5_Scarpe.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="my-4">Dettagli</h1>
+
+<div>
+   
+    <hr />
+    <div class="mb-4">
+        @if (ViewBag.Cover != null)
+        {
+            <img src="@Url.Content(ViewBag.Cover)" alt="Cover Image" class="img-fluid mb-4" style="max-width: 500px; height: auto;" />
+        }
+    </div>
+    <dl class="row my-4 fs-3">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+    <div class="row">
+        @if (!string.IsNullOrEmpty(ViewBag.AddImage1))
+        {
+            <div class="col-md-6">
+            
+                <dd>
+                    <img src="@Url.Content(ViewBag.AddImage1)" alt="Additional Image 1" class="img-fluid" style="max-width: 80%; max-height: 400px;" />
+                </dd>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(ViewBag.AddImage2))
+        {
+            <div class="col-md-6">
+              
+                <dd>
+                    <img src="@Url.Content(ViewBag.AddImage2)" alt="Additional Image 2" class="img-fluid" style="max-width: 80%; max-height: 400px;" />
+                </dd>
+            </div>
+        }
+    </div>
+</div>
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-warning">Torna alla lista </a>
+</div>
+

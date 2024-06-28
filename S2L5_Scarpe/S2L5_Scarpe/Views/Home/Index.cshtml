@@ -1,0 +1,33 @@
+﻿@model IEnumerable<S2L5_Scarpe.Models.Product>
+
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h2 class="fw-bold fst-italic">+ Aggiungi nuovo annuncio +</h2>
+<a href="@Url.Action("Create")" class="btn btn-primary mb-4">Crea nuovo annuncio</a>
+
+<h2 class="my-4">Scarpe DISPONIBILI</h2>
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                @if (ViewBag.Cover != null)
+                {
+                    <img src="@Url.Content(ViewBag.Cover)" class="card-img-top" alt="Cover Image" style="height: 200px; object-fit: cover;" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Price.ToString("C")</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Details", new { id = product.Id })" class="btn btn-sm btn-secondary me-2">Dettagli scarpa</a>
+                            <a href="@Url.Action("Delete", new { id = product.Id })" class="btn btn-sm btn-danger">Cancella</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿@model S2L5_Scarpe.Models.Product
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<h2 class="my-4">Crea Annuncio Scarpa</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6 my-3">
+            <label asp-for="Price" class="control-label"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6 my-3">
+            <label asp-for="CoverImage" class="control-label"></label>
+            <input asp-for="CoverImage" type="file" class="form-control-file" />
+            <span asp-validation-for="CoverImage" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6 my-3">
+            <label asp-for="AddImage1" class="control-label"></label>
+            <input asp-for="AddImage1" type="file" class="form-control-file" />
+            <span asp-validation-for="AddImage1" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6 my-3">
+            <label asp-for="AddImage2" class="control-label"></label>
+            <input asp-for="AddImage2" type="file" class="form-control-file" />
+            <span asp-validation-for="AddImage2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
