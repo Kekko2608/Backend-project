@@ -1,0 +1,22 @@
+﻿INSERT INTO [dbo].[IMPIEGATO] ([Cognome], [Nome], [Codice Fiscale], [Eta], [Reddito Mensile], [Detrazione Fiscale], [IDImpiego])
+VALUES 
+('Rossi', 'Mario', 'RSSMRA85M01H501Z', 38, 2500.00, 1, 101),
+('Verdi', 'Giulia', 'VRDGLI90A01H501Z', 33, 2700.00, 1, 102),
+('Bianchi', 'Luca', 'BNCLCU95M01H501Z', 28, 2300.00, 0, 103),
+('Neri', 'Anna', 'NRIANN70A01H501Z', 53, 3000.00, 1, 104),
+('Gialli', 'Paolo', 'GLLPLO80M01H501Z', 43, 2900.00, 0, 105),
+('Azzurri', 'Sara', 'AZZSRA95A01H501Z', 28, 2200.00, 1, 106),
+('Viola', 'Marco', 'VLMRCO88M01H501Z', 35, 2400.00, 0, 107),
+('Marroni', 'Elena', 'MRRLNE92A01H501Z', 31, 2600.00, 1, 108),
+('Bianchi', 'Davide', 'BNCDVD78M01H501Z', 45, 3200.00, 0, 109),
+('Rossi', 'Laura', 'RSSLRA83A01H501Z', 40, 2800.00, 1, 110),
+('Verdi', 'Simone', 'VRDSMN85M01H501Z', 38, 2500.00, 1, 111),
+('Gialli', 'Chiara', 'GLLCHR91A01H501Z', 32, 2700.00, 0, 112),
+('Azzurri', 'Giorgio', 'AZZGRG89M01H501Z', 34, 2300.00, 1, 113),
+('Neri', 'Federica', 'NRFDRC88A01H501Z', 35, 3000.00, 1, 114),
+('Viola', 'Lorenzo', 'VLALRZ94M01H501Z', 29, 2900.00, 0, 115),
+('Marroni', 'Alessandra', 'MRRLSN79A01H501Z', 44, 2200.00, 1, 116),
+('Rossi', 'Alberto', 'RSSLBR90M01H501Z', 33, 2400.00, 0, 117),
+('Verdi', 'Valentina', 'VRDVLN85A01H501Z', 38, 2600.00, 1, 118),
+('Bianchi', 'Giacomo', 'BNCGCM81M01H501Z', 42, 3200.00, 0, 119),
+('Neri', 'Martina', 'NRMRTN88A01H501Z', 35, 2800.00, 1, 120);

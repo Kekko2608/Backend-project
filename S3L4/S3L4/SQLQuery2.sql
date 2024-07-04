@@ -1,0 +1,22 @@
+﻿INSERT INTO [dbo].[IMPIEGO] ([IDImpiego], [Tipo impiego], [Assunzione])
+VALUES 
+(101, 'Manager', '2020-01-01'),
+(102, 'Developer', '2019-03-15'),
+(103, 'Analyst', '2018-07-22'),
+(104, 'HR', '2017-11-30'),
+(105, 'Accountant', '2016-02-10'),
+(106, 'Support', '2021-05-25'),
+(107, 'Sales', '2019-09-17'),
+(108, 'Marketing', '2018-04-01'),
+(109, 'Engineer', '2017-08-23'),
+(110, 'Consultant', '2016-12-19'),
+(111, 'Technician', '2020-06-11'),
+(112, 'Administrator', '2019-10-05'),
+(113, 'Designer', '2018-03-28'),
+(114, 'Supervisor', '2017-07-14'),
+(115, 'Coordinator', '2016-01-20'),
+(116, 'Director', '2021-04-09'),
+(117, 'Operator', '2019-08-16'),
+(118, 'Specialist', '2018-02-13'),
+(119, 'Strategist', '2017-06-21'),
+(120, 'Consultant', '2016-11-15');

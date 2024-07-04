@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L3\\S3L3\\S3L3.csproj": {}
+    "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L4\\S3L4\\S3L4.csproj": {}
   },
   "projects": {
-    "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L3\\S3L3\\S3L3.csproj": {
+    "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L4\\S3L4\\S3L4.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L3\\S3L3\\S3L3.csproj",
-        "projectName": "S3L3",
-        "projectPath": "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L3\\S3L3\\S3L3.csproj",
+        "projectUniqueName": "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L4\\S3L4\\S3L4.csproj",
+        "projectName": "S3L4",
+        "projectPath": "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L4\\S3L4\\S3L4.csproj",
         "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L3\\S3L3\\obj\\",
+        "outputPath": "C:\\Users\\franc\\Desktop\\Epicode BE\\Esercitazioni-BE\\S3L4\\S3L4\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,12 +45,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "System.Data.SqlClient": {
-              "target": "Package",
-              "version": "[4.8.6, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
