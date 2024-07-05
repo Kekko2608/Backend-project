@@ -1,0 +1,195 @@
+COMPITO S3L5 FRANCESCO PISU
+
+STRUTTURA TABELLE
+
+CREATE TABLE [dbo].[ANAGRAFICA] (
+    [IdAnagrafica] INT           IDENTITY (1, 1) NOT NULL,
+    [Nome]         NVARCHAR (50) NOT NULL,
+    [Cognome]      NVARCHAR (50) NOT NULL,
+    [Indirizzo]    NVARCHAR (50) NOT NULL,
+    [Citta]        NVARCHAR (50) NOT NULL,
+    [CAP]          NCHAR (5)     NOT NULL,
+    [Cod_Fisc]     NCHAR (16)    NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdAnagrafica] ASC)
+);
+
+CREATE TABLE [dbo].[VERBALE] (
+    [IdVerbale]               INT           IDENTITY (1, 1) NOT NULL,
+    [DataViolazione]          DATETIME2 (7) NOT NULL,
+    [IndirizzoViolazione]     NVARCHAR (50) NOT NULL,
+    [NominativoAgente]        NVARCHAR (50) NOT NULL,
+    [DataTrascrizioneVerbale] DATETIME2 (7) NULL,
+    [Importo]                 MONEY         NOT NULL,
+    [DecurtamentoPunti]       INT           NULL,
+    [FK_Violazione]           INT           NOT NULL,
+    [FK_Anagrafica]           INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdVerbale] ASC),
+    CONSTRAINT [FK_VERBALE_ANAGRAFICA] FOREIGN KEY ([FK_Anagrafica]) REFERENCES [ANAGRAFICA] ([IdAnagrafica]),
+    CONSTRAINT [FK_VERBALE_VIOLAZIONE] FOREIGN KEY ([FK_Violazione]) REFERENCES [VIOLAZIONE] ([IdViolazione])
+);
+
+CREATE TABLE [dbo].[VIOLAZIONE] (
+    [IdViolazione] INT           IDENTITY (1, 1) NOT NULL,
+    [Descrizione]  NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdViolazione] ASC)
+);
+
+
+QUERY
+
+1)
+
+SELECT 
+
+	COUNT (IdVerbale)
+
+FROM VERBALE
+
+
+2)
+
+SELECT 
+    A.Nome AS 'Nome',
+    A.Cognome AS 'Cognome',
+    COUNT(V.IdVerbale) AS 'Numero Verbali'
+FROM 
+   VERBALE V
+JOIN 
+    ANAGRAFICA A ON V.FK_Anagrafica = A.IdAnagrafica
+
+GROUP BY 
+    A.Nome, A.Cognome
+
+
+3)
+
+SELECT 
+    V.Descrizione AS 'Tipo Violazione',
+    COUNT(VER.IdVerbale) AS 'Numero verbali trascritti'
+FROM 
+    VERBALE VER
+JOIN 
+    VIOLAZIONE V ON VER.FK_Violazione = V.IdViolazione
+GROUP BY 
+    V.Descrizione
+
+4)
+
+SELECT 
+    A.Nome,
+    A.Cognome,
+    SUM(V.DecurtamentoPunti ) AS 'Totale Punti Decurtati'
+FROM 
+    VERBALE V
+JOIN 
+    ANAGRAFICA A ON V.FK_Anagrafica = A.IdAnagrafica
+
+GROUP BY 
+    A.Nome, A.Cognome
+
+5)
+
+SELECT 
+    A.Nome,
+    A.Cognome,
+    V.DataViolazione,
+    V.Importo,
+    V.DecurtamentoPunti
+FROM 
+    VERBALE V
+JOIN 
+   ANAGRAFICA A ON V.FK_Anagrafica = A.IdAnagrafica
+WHERE
+    A.Citta = 'Palermo';
+
+6)
+
+SELECT 
+    A.Cognome,
+    A.Nome,
+    A.Indirizzo,
+    V.DataViolazione,
+    V.Importo,
+    V.DecurtamentoPunti
+FROM 
+    VERBALE V
+JOIN 
+    ANAGRAFICA A ON V.FK_Anagrafica = A.IdAnagrafica
+WHERE
+    V.DataViolazione BETWEEN '2009-02-01' AND '2009-07-31'
+
+7)
+
+SELECT
+    A.Nome,
+    A.Cognome,
+	SUM(Importo) AS 'Importo Totale'
+FROM
+	VERBALE V 
+JOIN
+	ANAGRAFICA A ON V.FK_Anagrafica=A.IdAnagrafica
+GROUP BY 
+    A.Nome, A.Cognome
+
+8)
+
+SELECT
+    Nome,
+    Cognome
+FROM
+	ANAGRAFICA
+WHERE
+    Citta = 'Palermo';
+
+9)
+
+SELECT 
+    DataViolazione,
+    Importo,
+    DecurtamentoPunti
+FROM 
+    VERBALE 
+WHERE 
+    CONVERT(DATE, DataViolazione) = '01/06/2023';
+
+10)
+
+SELECT 
+    NominativoAgente,
+    COUNT(IdVerbale) AS 'Numero Violazioni'
+FROM 
+   VERBALE 
+GROUP BY 
+    NominativoAgente
+
+11)
+
+SELECT 
+    A.Cognome,
+    A.Nome,
+    A.Indirizzo,
+    V.DataViolazione,
+    V.Importo,
+    V.DecurtamentoPunti
+FROM 
+    VERBALE V
+JOIN 
+    ANAGRAFICA A ON V.FK_Anagrafica = A.IdAnagrafica
+WHERE 
+    V.DecurtamentoPunti > 5;
+
+12)
+
+SELECT 
+    A.Cognome,
+    A.Nome,
+    A.Indirizzo,
+    V.DataViolazione,
+    V.Importo,
+    V.DecurtamentoPunti
+FROM 
+    VERBALE V
+JOIN 
+    ANAGRAFICA A ON V.FK_Anagrafica = A.IdAnagrafica
+WHERE 
+    V.Importo > 400;
