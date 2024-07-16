@@ -1,0 +1,39 @@
+﻿
+@model S5.Models.ContattiViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">Benvenuti nella nostra azienda!</h1>
+    <p class="lead">Siamo leader nel settore delle spedizioni, offrendo un servizio rapido e affidabile per tutte le tue esigenze di trasporto.</p>
+    <hr class="my-4">
+    <p>Scopri di più sui nostri servizi visitando le nostre pagine.</p>
+</div>
+
+<div class="container">
+    <h2>Contattaci</h2>
+    @if (ViewBag.Messaggio != null)
+    {
+        <div class="alert alert-success">
+            @ViewBag.Messaggio
+        </div>
+    }
+
+    <form asp-action="Contatti" method="post">
+        <div class="form-group">
+            <label for="Nome">Nome</label>
+            <input type="text" class="form-control" id="Nome" name="Nome" value="@Model.Nome" required />
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" required />
+        </div>
+        <div class="form-group">
+            <label for="Messaggio">Messaggio</label>
+            <textarea class="form-control" id="Messaggio" name="Messaggio" rows="5" required>@Model.Messaggio</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Invia</button>
+    </form>
+</div>

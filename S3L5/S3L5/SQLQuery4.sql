@@ -1,0 +1,6 @@
+﻿SELECT 
+
+	COUNT (IdVerbale)
+
+FROM VERBALE
+
