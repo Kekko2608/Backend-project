@@ -21,7 +21,9 @@ namespace S5.Nuova_cartella1
                 OUTPUT INSERTED.SpedizioneID
                 VALUES (@ClienteID, @NumeroIdentificativo, @DataSpedizione, @Peso, @CittaDestinataria, @IndirizzoDestinatario, @NominativoDestinatario, @Costo, @DataConsegnaPrevista)";
 
-            using var cmd = GetCommand(query);
+            using var conn = GetConnection();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = query;
             cmd.Parameters.Add(new SqlParameter("@ClienteID", spedizione.ClienteID));
             cmd.Parameters.Add(new SqlParameter("@NumeroIdentificativo", spedizione.NumeroIdentificativo));
             cmd.Parameters.Add(new SqlParameter("@DataSpedizione", spedizione.DataSpedizione));
@@ -32,9 +34,9 @@ namespace S5.Nuova_cartella1
             cmd.Parameters.Add(new SqlParameter("@Costo", spedizione.Costo));
             cmd.Parameters.Add(new SqlParameter("@DataConsegnaPrevista", spedizione.DataConsegnaPrevista));
 
-            using var conn = GetConnection();
             conn.Open();
             spedizione.SpedizioneID = (int)cmd.ExecuteScalar();
+            conn.Close();
 
             return spedizione;
         }
@@ -43,12 +45,14 @@ namespace S5.Nuova_cartella1
         {
             var query = "DELETE FROM Spedizioni WHERE SpedizioneID = @SpedizioneID";
 
-            using var cmd = GetCommand(query);
+            using var conn = GetConnection();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = query;
             cmd.Parameters.Add(new SqlParameter("@SpedizioneID", spedizioneId));
 
-            using var conn = GetConnection();
             conn.Open();
             cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public IEnumerable<Spedizione> GetAllSpedizioni()
@@ -57,8 +61,10 @@ namespace S5.Nuova_cartella1
                 SELECT SpedizioneID, ClienteID, NumeroIdentificativo, DataSpedizione, Peso, CittaDestinataria, IndirizzoDestinatario, NominativoDestinatario, Costo, DataConsegnaPrevista
                 FROM Spedizioni";
 
-            using var cmd = GetCommand(query);
             using var conn = GetConnection();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = query;
+
             conn.Open();
             using var reader = cmd.ExecuteReader();
             var ListaSpedizioni = new List<Spedizione>();
@@ -78,6 +84,7 @@ namespace S5.Nuova_cartella1
                     DataConsegnaPrevista = reader.GetDateTime(9)
                 });
             }
+            conn.Close();
             return ListaSpedizioni;
         }
 
@@ -88,15 +95,17 @@ namespace S5.Nuova_cartella1
                 FROM Spedizioni
                 WHERE SpedizioneID = @SpedizioneID";
 
-            using var cmd = GetCommand(query);
+            using var conn = GetConnection();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = query;
             cmd.Parameters.Add(new SqlParameter("@SpedizioneID", spedizioneId));
 
-            using var conn = GetConnection();
             conn.Open();
             using var reader = cmd.ExecuteReader();
+            Spedizione? spedizione = null;
             if (reader.Read())
             {
-                return new Spedizione
+                spedizione = new Spedizione
                 {
                     SpedizioneID = reader.GetInt32(0),
                     ClienteID = reader.GetInt32(1),
@@ -110,7 +119,8 @@ namespace S5.Nuova_cartella1
                     DataConsegnaPrevista = reader.GetDateTime(9)
                 };
             }
-            return null;
+            conn.Close();
+            return spedizione;
         }
 
         public void UpdateSpedizione(Spedizione spedizione)
@@ -128,7 +138,9 @@ namespace S5.Nuova_cartella1
                     DataConsegnaPrevista = @DataConsegnaPrevista
                 WHERE SpedizioneID = @SpedizioneID";
 
-            using var cmd = GetCommand(query);
+            using var conn = GetConnection();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = query;
             cmd.Parameters.Add(new SqlParameter("@SpedizioneID", spedizione.SpedizioneID));
             cmd.Parameters.Add(new SqlParameter("@ClienteID", spedizione.ClienteID));
             cmd.Parameters.Add(new SqlParameter("@NumeroIdentificativo", spedizione.NumeroIdentificativo));
@@ -140,9 +152,9 @@ namespace S5.Nuova_cartella1
             cmd.Parameters.Add(new SqlParameter("@Costo", spedizione.Costo));
             cmd.Parameters.Add(new SqlParameter("@DataConsegnaPrevista", spedizione.DataConsegnaPrevista));
 
-            using var conn = GetConnection();
             conn.Open();
             cmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

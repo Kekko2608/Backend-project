@@ -3,10 +3,13 @@
 
 @{
     ViewData["Title"] = "Home Page";
+
+    var currentUser = (User.Identity?.IsAuthenticated ?? false) ? User.Identity.Name : "Anonimo";
+    var friendlyName = User.Claims.FirstOrDefault(c => c.Type == "FriendlyName")?.Value ?? currentUser;
 }
 
 <div class="jumbotron">
-    <h1 class="display-4">Benvenuti nella nostra azienda!</h1>
+    <h1 class="display-4">Benvenuto nella nostra azienda @friendlyName!</h1>
     <p class="lead">Siamo leader nel settore delle spedizioni, offrendo un servizio rapido e affidabile per tutte le tue esigenze di trasporto.</p>
     <hr class="my-4">
     <p>Scopri di più sui nostri servizi visitando le nostre pagine.</p>

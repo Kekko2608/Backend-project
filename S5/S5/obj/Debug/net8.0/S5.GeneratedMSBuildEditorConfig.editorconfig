@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\S5\S5
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/S5/S5/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/S5/S5/Views/Home/CreaAggiornamento.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhQWdnaW9ybmFtZW50by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

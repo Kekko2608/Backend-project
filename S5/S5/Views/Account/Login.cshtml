@@ -1,0 +1,15 @@
+﻿@model ApplicationUser
+
+<form asp-action="Login">
+    <div>
+        <label asp-for="Username">Username</label>
+        <input asp-for="Username" />
+    </div>
+    <br />
+    <div>
+        <label asp-for="Password">Password</label>
+        <input type="password" asp-for="Password" />
+    </div>
+    <br />
+    <button type="submit">Login</button>
+</form>
