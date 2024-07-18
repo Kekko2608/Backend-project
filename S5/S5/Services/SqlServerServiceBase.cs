@@ -8,7 +8,7 @@ namespace S5.Services
         private SqlConnection _connection;
         public SqlServerServiceBase(IConfiguration config)
         {
-            _connection = new SqlConnection(config.GetConnectionString("Db"));
+            _connection = new SqlConnection(config.GetConnectionString("AuthDb"));
         }
         protected override DbCommand GetCommand(string commandText)
         {

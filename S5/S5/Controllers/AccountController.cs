@@ -5,7 +5,6 @@ using S5.Models;
 using S5.Services;
 using System.Security.Claims;
 
-
 namespace S5.Controllers
 {
     public class AccountController : Controller
@@ -28,7 +27,11 @@ namespace S5.Controllers
             try
             {
                 var u = authenticationService.Login(user.Username, user.Password);
-                if (u == null) return RedirectToAction("Index", "Home");
+                if (u == null)
+                {
+                    ViewBag.ErrorMessage = "Login fallito. Username o password non validi.";
+                    return View();
+                }
 
                 var claims = new List<Claim> {
                     new Claim(ClaimTypes.Name, u.Username),
@@ -47,8 +50,9 @@ namespace S5.Controllers
             catch (Exception ex)
             {
                 // Aggiungi log o gestisci l'eccezione come necessario
+                ViewBag.ErrorMessage = "Si è verificato un errore durante il login.";
+                return View();
             }
-            return RedirectToAction("Index", "Home");
         }
 
         public async Task<IActionResult> Logout()

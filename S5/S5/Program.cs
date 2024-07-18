@@ -11,22 +11,19 @@ builder.Services
     .AddScoped<IAggiornamentoSpedizioneService, AggiornamentoSpedizioneService>()
     .AddScoped<IAuthService, AuthService>()
     .AddControllersWithViews();
-    
-// configurazione dell'autenticazione
+
+// Configurazione dell'autenticazione
 builder.Services
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(opt => {
-        // pagina alla quale l'utente sarà indirizzato se non è stato già riconosciuto
+        // Pagina alla quale l'utente sarà indirizzato se non è stato già riconosciuto
         opt.LoginPath = "/Account/Login";
-    })
-    ;
-// fine configurazione dell'autenticazione
+    });
 
-
+// Aggiungi il supporto per la configurazione
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 var app = builder.Build();
-
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -41,6 +38,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace S5.Controllers
 {
-    [Authorize]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -26,7 +26,7 @@ namespace S5.Controllers
             _aggiornamentoSpedizioneService = aggiornamentoSpedizioneService;
         }
 
-        [AllowAnonymous]
+    
         public IActionResult Index()
         {
             return View(new ContattiViewModel());
@@ -134,7 +134,7 @@ namespace S5.Controllers
             return View(spedizioni);
         }
 
-        [AllowAnonymous]
+
         public IActionResult DettagliSpedizione(int id)
         {
             var spedizione = _spedizioneService.GetSpedizioneById(id);
