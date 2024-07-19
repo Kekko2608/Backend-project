@@ -48,11 +48,15 @@ namespace Progetto_Municipale.Services
         }
 
 
-        private const string ALL_VERBALI_BY_PUNTI_DECURTATI_COMMAND = "SELECT a.IDAnagrafica, a.Nome, a.Cognome, SUM(v.DecurtamentoPunti) AS TotalePuntiDecurtati " +
-           "FROM [dbo].[Verbale] v " +
-           "JOIN [dbo].[Anagrafica] a ON v.FK_Anagrafica = a.IdAnagrafica " +
-           "GROUP BY a.IdAnagrafica, a.Nome, a.Cognome " +
-           "ORDER BY TotalePuntiDecurtati DESC;";
+        private const string ALL_VERBALI_BY_PUNTI_DECURTATI_COMMAND = @"
+        SELECT a.IdAnagrafica, a.Nome, a.Cognome, SUM(v.DecurtamentoPunti) AS TotalePuntiDecurtati
+        FROM [dbo].[Verbale] v
+        INNER JOIN [dbo].[Anagrafica] a ON v.FK_Anagrafica = a.IdAnagrafica
+        GROUP BY a.IdAnagrafica, a.Nome, a.Cognome
+        ORDER BY TotalePuntiDecurtati DESC;
+        ";
+
+
         public List<TrasgrByPuntiDecurtati> GetAllTrasgrByPuntiDec()
         {
             var result = new List<TrasgrByPuntiDecurtati>();

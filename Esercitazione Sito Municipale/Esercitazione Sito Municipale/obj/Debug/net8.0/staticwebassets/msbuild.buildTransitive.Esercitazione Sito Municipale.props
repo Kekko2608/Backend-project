@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Esercitazione Sito Municipale.props" />
-</Project>

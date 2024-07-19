@@ -17,12 +17,14 @@ namespace Progetto_Municipale.Services
 
             private const string CREATE_VIOLAZIONE_COMMAND = "INSERT INTO [dbo].[Violazione] (Descrizione) OUTPUT INSERTED.IdViolazione VALUES (@Descrizione)";
 
+
             public Violazione Create(Violazione violazione)
             {
                 try
                 {
                     using (var connection = new SqlConnection(_connectionString))
                     {
+
                         connection.Open();
                         using (var command = new SqlCommand(CREATE_VIOLAZIONE_COMMAND, connection))
                         {
@@ -33,11 +35,15 @@ namespace Progetto_Municipale.Services
                     }
                     return violazione;
                 }
+
                 catch (Exception ex)
+
                 {
                     throw new Exception("Errore nella creazione Violazione: " + ex.Message);
                 }
             }
+
+
 
 
             private const string GET_ALL_VIOLAZIONI_COMMAND = "SELECT IdViolazione, Descrizione FROM [dbo].[Violazione]";
@@ -49,6 +55,7 @@ namespace Progetto_Municipale.Services
                 {
                     using (var connection = new SqlConnection(_connectionString))
                     {
+
                         connection.Open();
                         using (var command = new SqlCommand(GET_ALL_VIOLAZIONI_COMMAND, connection))
                         {
@@ -67,6 +74,7 @@ namespace Progetto_Municipale.Services
                         }
                     }
                 }
+
                 catch (Exception ex)
                 {
                     throw new Exception("Error retrieving violazioni: " + ex.Message);
@@ -126,6 +134,7 @@ namespace Progetto_Municipale.Services
             WHERE v.Importo > 400
             ORDER BY v.Importo DESC;";
 
+
             public List<ViolOver400Importo> GetViolOver400Importo()
             {
                 var result = new List<ViolOver400Importo>();
@@ -154,7 +163,9 @@ namespace Progetto_Municipale.Services
                         }
                     }
                 }
+
                 catch (Exception ex)
+
                 {
                     throw new Exception("Error retrieving violations with import over 400 euros: " + ex.Message);
                 }

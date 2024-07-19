@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Progetto Municipale")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff088a8a9a0f03c7cef46986d87fe2b0dc67e6ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+194b81907da2f5057996efe8f604814fb87b9aee")]
 [assembly: System.Reflection.AssemblyProductAttribute("Progetto Municipale")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Progetto Municipale")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

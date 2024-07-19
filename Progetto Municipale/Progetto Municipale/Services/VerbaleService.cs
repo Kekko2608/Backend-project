@@ -14,9 +14,12 @@ namespace Progetto_Municipale.Services
 
 
         private const string CREATE_VERBALE_COMMAND = "INSERT INTO [dbo].[Verbale] " +
-            "(DataViolazione, IndirizzoViolazione, NominativoAgente, DataTrascrizioneVerbale, Importo, DecurtamentoPunti, FK_Anagrafica, FK_Violazione) " +
-            "OUTPUT INSERTED.IdVerbale " +
-            "VALUES (@DataViolazione, @IndirizzoViolazione, @NominativoAgente, @DataTrascrizioneVerbale, @Importo, @DecurtamentoPunti, @FK_Anagrafica, @FK_Violazione)";
+        "(DataViolazione, IndirizzoViolazione, NominativoAgente, DataTrascrizioneVerbale, Importo, DecurtamentoPunti, FK_Anagrafica, FK_Violazione) " +
+        "OUTPUT INSERTED.IdVerbale " +
+        "VALUES (@DataViolazione, @IndirizzoViolazione, @NominativoAgente, @DataTrascrizioneVerbale, @Importo, @DecurtamentoPunti, @FK_Anagrafica, @FK_Violazione)";
+        
+        
+        
         public Verbale Create(Verbale verbale)
         {
             try
@@ -49,11 +52,13 @@ namespace Progetto_Municipale.Services
         }
 
 
-        private const string ALLVERBALI_BY_TRASGRESSORE_COMMAND = "SELECT a.IdAnagrafica, a.Nome, a.Cognome, COUNT(v.IdVerbale) AS TotaleVerbali " +
-            "FROM [dbo].[Verbale] v " +
-            "JOIN [dbo].[Anagrafica] a ON v.FK_Anagrafica = a.IdAnagrafica " +
-            "GROUP BY a.IdAnagrafica, a.Nome, a.Cognome " +
-            "ORDER BY TotaleVerbali DESC;";
+        private const string ALLVERBALI_BY_TRASGRESSORE_COMMAND = @"
+        SELECT a.IdAnagrafica, a.Nome, a.Cognome, COUNT(v.IdVerbale) AS TotaleVerbali
+        FROM [dbo].[Verbale] v
+        INNER JOIN [dbo].[Anagrafica] a ON v.FK_Anagrafica = a.IdAnagrafica
+        GROUP BY a.IdAnagrafica, a.Nome, a.Cognome
+        ORDER BY TotaleVerbali DESC;
+";
 
         public List<VerbaleByIdTrasgr> GetAllVerbaliByTrasgr()
         {
@@ -90,7 +95,6 @@ namespace Progetto_Municipale.Services
 
             return result;
         }
-
 
 
     }
