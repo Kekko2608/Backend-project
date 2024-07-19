@@ -1,0 +1,34 @@
+STRUTTURA TABELLE
+
+CREATE TABLE [dbo].[ANAGRAFICA] (
+    [IdAnagrafica] INT           IDENTITY (1, 1) NOT NULL,
+    [Nome]         NVARCHAR (50) NOT NULL,
+    [Cognome]      NVARCHAR (50) NOT NULL,
+    [Indirizzo]    NVARCHAR (50) NOT NULL,
+    [Citta]        NVARCHAR (50) NOT NULL,
+    [CAP]          NCHAR (5)     NOT NULL,
+    [Cod_Fisc]     NCHAR (16)    NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdAnagrafica] ASC)
+);
+
+CREATE TABLE [dbo].[VERBALE] (
+    [IdVerbale]               INT           IDENTITY (1, 1) NOT NULL,
+    [DataViolazione]          DATETIME2 (7) NOT NULL,
+    [IndirizzoViolazione]     NVARCHAR (50) NOT NULL,
+    [NominativoAgente]        NVARCHAR (50) NOT NULL,
+    [DataTrascrizioneVerbale] DATETIME2 (7) NULL,
+    [Importo]                 MONEY         NOT NULL,
+    [DecurtamentoPunti]       INT           NULL,
+    [FK_Violazione]           INT           NOT NULL,
+    [FK_Anagrafica]           INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdVerbale] ASC),
+    CONSTRAINT [FK_VERBALE_ANAGRAFICA] FOREIGN KEY ([FK_Anagrafica]) REFERENCES [ANAGRAFICA] ([IdAnagrafica]),
+    CONSTRAINT [FK_VERBALE_VIOLAZIONE] FOREIGN KEY ([FK_Violazione]) REFERENCES [VIOLAZIONE] ([IdViolazione])
+);
+
+CREATE TABLE [dbo].[VIOLAZIONE] (
+    [IdViolazione] INT           IDENTITY (1, 1) NOT NULL,
+    [Descrizione]  NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdViolazione] ASC)
+);
+
