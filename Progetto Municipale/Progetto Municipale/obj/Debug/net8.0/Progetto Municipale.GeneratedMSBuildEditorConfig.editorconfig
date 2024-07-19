@@ -1,0 +1,91 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Progetto_Municipale
+build_property.RootNamespace = Progetto_Municipale
+build_property.ProjectDir = C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Progetto Municipale\Progetto Municipale\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Progetto Municipale\Progetto Municipale
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/CreaAnagrafica.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhQW5hZ3JhZmljYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/CreaVerbale.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhVmVyYmFsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/CreaViolazione.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhVmlvbGF6aW9uZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/GetAllViolazioni.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXRBbGxWaW9sYXppb25pLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/Link.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaW5rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/TrasgressorePuntiDecurtati.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFzZ3Jlc3NvcmVQdW50aURlY3VydGF0aS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/VerbaliPerTrasgressore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWZXJiYWxpUGVyVHJhc2dyZXNzb3JlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/ViolazioniOver10Punti.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaW9sYXppb25pT3ZlcjEwUHVudGkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Home/ViolazioniOver400Importo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaW9sYXppb25pT3ZlcjQwMEltcG9ydG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto Municipale/Progetto Municipale/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-uiz7s5hwin

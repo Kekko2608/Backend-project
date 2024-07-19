@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Violazioni con Importo Maggiore di 400 Euro";
+}
+
+<h1>Violazioni con importo maggiore di 400 Euro</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Data di Violazione</th>
+            <th>Importo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Nome</td>
+                <td>@i.Cognome</td>
+                <td>@i.DataViolazione.ToShortDateString()</td>
+                <td>@i.Importo</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

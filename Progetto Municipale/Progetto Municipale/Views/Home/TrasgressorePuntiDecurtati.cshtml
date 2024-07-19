@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Punti Decurtati per Trasgressore";
+}
+
+<h1>Punti Decurtati per Trasgressore</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID Trasgressore</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Totale Punti Decurtati</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IDAnagrafica</td>
+                <td>@item.Nome</td>
+                <td>@item.Cognome</td>
+                <td>@item.TotalePuntiDecurtati</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

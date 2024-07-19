@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Lista Violazioni";
+}
+
+<h1>Tutte le Violazioni</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.IdViolazione</td>
+                <td>@v.Descrizione</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" class="text-decoration-none my-4">Back to Home</a>
+</div>

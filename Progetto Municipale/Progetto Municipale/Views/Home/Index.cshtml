@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container mt-5">
+    <h1 class="display-4 fw-bold fst-italic text-center ">Polizia Municipale</h1>
+    <h2 class="my-4">Menu</h2>
+    <div class="mt-5 fs-4">
+        <ul>
+            <li class="mb-3">
+                <a class="text-dark text-decoration-none" asp-area="" asp-controller="Home" asp-action="CreaAnagrafica">
+                    Crea Anagrafica Trasgressore
+                </a>
+            </li>
+            <li class="mb-3">
+                <a class="text-dark text-decoration-none" asp-area="" asp-controller="Home" asp-action="CreaVerbale">
+                    Crea Nuovo Verbale
+                </a>
+            </li>
+            <li class="mb-3">
+                <a class="text-dark text-decoration-none" asp-area="" asp-controller="Home" asp-action="GetAllViolazioni">
+                    Visualizza lista Violazioni
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Esercitazione Sito Municipale.props" />
+</Project>
