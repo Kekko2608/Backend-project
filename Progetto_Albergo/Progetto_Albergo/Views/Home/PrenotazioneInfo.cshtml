@@ -1,0 +1,58 @@
+﻿@model Progetto_Albergo.Models.DettaglioPrenotazioneViewModel
+
+@{
+    ViewData["Title"] = "Dettaglio Prenotazione";
+}
+
+<h2>Dettaglio Prenotazione</h2>
+
+<div>
+    <h4>Numero Stanza</h4>
+    <p>@Model.PrenotazioneInfo.NumeroStanza</p>
+</div>
+<div>
+    <h4>Periodo</h4>
+    <p>@Model.PrenotazioneInfo.DataInizio.ToString("dd/MM/yyyy") - @Model.PrenotazioneInfo.DataFine.ToString("dd/MM/yyyy")</p>
+</div>
+<div>
+    <h4>Tariffa</h4>
+    <p>@Model.PrenotazioneInfo.Tariffa</p>
+</div>
+<div>
+    <h4>Caparra</h4>
+    <p>@Model.PrenotazioneInfo.Caparra</p>
+</div>
+<div>
+    <h4>Importo da Saldare</h4>
+    <p>@Model.ImportoDaSaldare.ToString("C")</p>
+</div>
+
+<h3>Servizi Aggiuntivi</h3>
+@if (Model.ServiziAggiuntivi != null && Model.ServiziAggiuntivi.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Descrizione</th>
+                <th>Data</th>
+                <th>Quantità</th>
+                <th>Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var servizio in Model.ServiziAggiuntivi)
+            {
+                <tr>
+                    <td>@servizio.Descrizione</td>
+                    <td>@servizio.Data.ToString("dd/MM/yyyy")</td>
+                    <td>@servizio.Quantita</td>
+                    <td>@servizio.Prezzo.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessun servizio aggiuntivo richiesto.</p>
+}

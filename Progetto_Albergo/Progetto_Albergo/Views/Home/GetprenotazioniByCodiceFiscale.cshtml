@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Progetto_Albergo.Models.Prenotazione>
+
+@{
+    ViewData["Title"] = "Prenotazioni per Codice Fiscale";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID Prenotazione</th>
+                <th>Data</th>
+                <th>Numero</th>
+                <th>Anno</th>
+                <th>Dal</th>
+                <th>Al</th>
+                <th>Caparra</th>
+                <th>Tariffa</th>
+                <th>Descrizione</th>
+                <th>ID Cliente</th>
+                <th>ID Camera</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prenotazione in Model)
+            {
+                <tr>
+                    <td>@prenotazione.IdPrenotazione</td>
+                    <td>@prenotazione.Data.ToShortDateString()</td>
+                    <td>@prenotazione.Numero</td>
+                    <td>@prenotazione.Anno</td>
+                    <td>@prenotazione.Dal.ToShortDateString()</td>
+                    <td>@prenotazione.Al.ToShortDateString()</td>
+                    <td>@prenotazione.Caparra.</td>
+                    <td>@prenotazione.Tariffa</td>
+                    <td>@prenotazione.Descrizione</td>
+                    <td>@prenotazione.FK_Cliente</td>
+                    <td>@prenotazione.FK_Camera</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessuna prenotazione trovata per il codice fiscale fornito.</p>
+}

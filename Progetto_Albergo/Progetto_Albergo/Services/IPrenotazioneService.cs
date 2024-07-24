@@ -4,8 +4,12 @@ namespace Progetto_Albergo.Services
 {
     public interface IPrenotazioneService
     {
-        Prenotazione GetPrenotazioneById(int id);
-        IEnumerable<Prenotazione> GetPrenotazioniByCodiceFiscale(string codiceFiscale);
-        void AddPrenotazione(Prenotazione prenotazione);
-    }
+        PrenotazioneInfo GetPrenotazioneById(int idPrenotazione);
+        List<Prenotazione> GetPrenotazioniByCodiceFiscale(string codiceFiscale);
+        Prenotazione AddPrenotazione(Prenotazione prenotazione);
+        List<Prenotazioni_Servizi> GetServiziAggiuntiviByPrenotazione(int idPrenotazione);
+        decimal GetTotaleServiziAggiuntivi(int idPrenotazione);
+        List<Prenotazione> GetAllPrenotazioni();
+        int GetTotalePrenotazioniPensioneCompleta();
+    }       
 }

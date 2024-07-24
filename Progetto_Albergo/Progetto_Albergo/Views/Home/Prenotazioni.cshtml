@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Progetto_Albergo.Models.Prenotazione>
+
+@{
+    ViewData["Title"] = "Lista Prenotazioni";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Numero</th>
+            <th>Anno</th>
+            <th>Dal</th>
+            <th>Al</th>
+            <th>Caparra</th>
+            <th>Tariffa</th>
+            <th>Descrizione</th>
+            <th>Dettagli</th> <!-- Aggiungi questa intestazione -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prenotazione in Model)
+        {
+            <tr>
+                <td>@prenotazione.IdPrenotazione</td>
+                <td>@prenotazione.Data.ToShortDateString()</td>
+                <td>@prenotazione.Numero</td>
+                <td>@prenotazione.Anno</td>
+                <td>@prenotazione.Dal.ToShortDateString()</td>
+                <td>@prenotazione.Al.ToShortDateString()</td>
+                <td>@prenotazione.Caparra</td>
+                <td>@prenotazione.Tariffa</td>
+                <td>@prenotazione.Descrizione</td>
+                <td>
+                    <!-- Pulsante Dettaglio -->
+                    <a href="@Url.Action("PrenotazioneInfo", "Home", new { id = prenotazione.IdPrenotazione })" class="btn btn-info">
+                        Dettaglio
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

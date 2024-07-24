@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Progetto_Albergo
 build_property.RootNamespace = Progetto_Albergo
@@ -18,8 +26,44 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\franc\Desktop\Epicode BE\Esercitazioni-BE\Progetto_Albergo\Progetto_Albergo
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/AddCliente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRDbGllbnRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/Addprenotazione.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRwcmVub3RhemlvbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/GetprenotazioniByCodiceFiscale.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXRwcmVub3RhemlvbmlCeUNvZGljZUZpc2NhbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/InserisciCodiceFiscale.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnNlcmlzY2lDb2RpY2VGaXNjYWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/PrenotazioneInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcmVub3RhemlvbmVJbmZvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/Prenotazioni.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcmVub3RhemlvbmkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/PrenotazioniPensioneCompleta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcmVub3RhemlvbmlQZW5zaW9uZUNvbXBsZXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/Privacy.cshtml]

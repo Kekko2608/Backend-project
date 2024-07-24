@@ -5,6 +5,6 @@ namespace Progetto_Albergo.Services
     public interface IClienteService
     {
         Cliente GetClienteByCodiceFiscale(string codiceFiscale);
-        void AddCliente(Cliente cliente);
+        Cliente AddCliente(Cliente cliente);
     }
 }
