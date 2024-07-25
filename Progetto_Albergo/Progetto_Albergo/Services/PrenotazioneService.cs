@@ -166,9 +166,9 @@ WHERE
                 throw new Exception("Errore nel recuperare il dettaglio della prenotazione. Dettagli tecnici: " + ex.Message);
             }
         }
-    
 
-        public List<Prenotazione> GetPrenotazioniByCodiceFiscale(string CodiceFiscale)
+
+        public async Task<List<Prenotazione>> GetPrenotazioniByCodiceFiscaleAsync(string codiceFiscale)
         {
             var result = new List<Prenotazione>();
 
@@ -176,15 +176,15 @@ WHERE
             {
                 using (var connection = new SqlConnection(_connectionString))
                 {
-                    connection.Open();
+                    await connection.OpenAsync(); // Apri la connessione in modo asincrono
                     using (var command = new SqlCommand(PRENOTAZIONI_BY_CF, connection))
                     {
-                        // Aggiungere il parametro per la query
-                        command.Parameters.AddWithValue("@CodiceFiscale", CodiceFiscale);
+                        // Aggiungi il parametro per la query
+                        command.Parameters.AddWithValue("@CodiceFiscale", codiceFiscale);
 
-                        using (var reader = command.ExecuteReader())
+                        using (var reader = await command.ExecuteReaderAsync()) // Esegui la query in modo asincrono
                         {
-                            while (reader.Read())
+                            while (await reader.ReadAsync()) // Leggi le righe in modo asincrono
                             {
                                 var prenotByCF = new Prenotazione
                                 {
@@ -323,16 +323,16 @@ WHERE
             return result;
         }
 
-        public int GetTotalePrenotazioniPensioneCompleta()
+        public async Task<int> GetTotalePrenotazioniPensioneCompletaAsync()
         {
             try
             {
                 using (var connection = new SqlConnection(_connectionString))
                 {
-                    connection.Open();
+                    await connection.OpenAsync();
                     using (var command = new SqlCommand(TOTALE_PRENOTAZIONI_PENSIONE_COMPLETA, connection))
                     {
-                        return (int)command.ExecuteScalar(); // Restituisce il conteggio delle prenotazioni
+                        return (int)await command.ExecuteScalarAsync(); // Restituisce il conteggio delle prenotazioni
                     }
                 }
             }

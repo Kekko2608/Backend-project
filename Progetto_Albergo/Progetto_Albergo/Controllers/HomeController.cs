@@ -81,16 +81,21 @@ namespace Progetto_Albergo.Controllers
             return View(new CodiceFiscaleViewModel());
         }
 
-        public IActionResult GetPrenotazioniByCodiceFiscale(CodiceFiscaleViewModel model)
+        public async Task<IActionResult> GetPrenotazioniByCodiceFiscale(CodiceFiscaleViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var prenotazioniByCodiceFiscale = _prenotazioneService.GetPrenotazioniByCodiceFiscale(model.CodiceFiscale);
-                return View("GetPrenotazioniByCodiceFiscale", prenotazioniByCodiceFiscale); // Assumi che PrenotazioniList sia la view che mostra le prenotazioni
+                // Chiamata asincrona al servizio
+                var prenotazioniByCodiceFiscale = await _prenotazioneService.GetPrenotazioniByCodiceFiscaleAsync(model.CodiceFiscale);
+
+                // Ritorna la vista con le prenotazioni
+                return View("GetPrenotazioniByCodiceFiscale", prenotazioniByCodiceFiscale);
             }
 
-            return View(model); // Ritorna la vista con errori se il modello non è valido
+            // Ritorna la vista con errori se il modello non è valido
+            return View(model);
         }
+
 
         public IActionResult PrenotazioneInfo(int id)
         {
@@ -122,12 +127,23 @@ namespace Progetto_Albergo.Controllers
         }
 
 
-        public IActionResult PrenotazioniPensioneCompleta()
+        public async Task<IActionResult> PrenotazioniPensioneCompleta()
         {
-            var totalePrenotazioni = _prenotazioneService.GetTotalePrenotazioniPensioneCompleta();
-            ViewBag.TotalePrenotazioni = totalePrenotazioni;
-            return View();
+            try
+            {
+                // Chiamata asincrona al servizio
+                var totalePrenotazioni = await _prenotazioneService.GetTotalePrenotazioniPensioneCompletaAsync();
+                ViewBag.TotalePrenotazioni = totalePrenotazioni;
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // Gestione dell'eccezione e restituzione di una vista di errore o di un messaggio di errore
+                ViewBag.ErrorMessage = "Errore nel recuperare il totale delle prenotazioni per pensione completa. Dettagli tecnici: " + ex.Message;
+                return View("Error"); // Assumi che "Error" sia una vista che mostra il messaggio di errore
+            }
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
