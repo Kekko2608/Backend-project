@@ -346,8 +346,8 @@ WHERE
         {
             const string ADD_SERVIZIO_COMMAND = @"
         INSERT INTO [dbo].[PRENOTAZIONI_SERVIZI]
-        (Data, Quantita, Prezzo, FK_Prenotazione, FK_Servizio, Descrizione)
-        VALUES (@Data, @Quantita, @Prezzo, @FK_Prenotazione, @FK_Servizio, @Descrizione)";
+        (Data, Quantita, Prezzo, FK_Prenotazione, FK_Servizio)
+        VALUES (@Data, @Quantita, @Prezzo, @FK_Prenotazione, @FK_Servizio)";
 
             try
             {
@@ -361,7 +361,6 @@ WHERE
                         command.Parameters.AddWithValue("@Prezzo", servizio.Prezzo);
                         command.Parameters.AddWithValue("@FK_Prenotazione", servizio.FK_Prenotazione);
                         command.Parameters.AddWithValue("@FK_Servizio", servizio.FK_Servizio);
-                        command.Parameters.AddWithValue("@Descrizione", servizio.Descrizione);
 
                         command.ExecuteNonQuery();
                     }
@@ -374,4 +373,5 @@ WHERE
         }
     }
 }
+
 

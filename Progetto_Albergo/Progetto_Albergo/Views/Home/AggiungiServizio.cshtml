@@ -24,6 +24,12 @@
     </div>
 
     <div class="form-group">
+        <label asp-for="Prezzo" class="control-label"></label>
+        <input asp-for="Prezzo" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Prezzo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
         <label asp-for="Data" class="control-label"></label>
         <input asp-for="Data" type="date" class="form-control" />
         <span asp-validation-for="Data" class="text-danger"></span>
@@ -35,5 +41,5 @@
 </form>
 
 <div>
-    <a href="@Url.Action("Dettaglio", "Home", new { id = Model.IdPrenotazione })" class="btn btn-secondary">Annulla</a>
+    <a href="@Url.Action("Prenotazioni", "Home", new { id = Model.IdPrenotazione })" class="btn btn-secondary">Annulla</a>
 </div>

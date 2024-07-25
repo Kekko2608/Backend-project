@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Progetto_Albergo.Models;
 using Progetto_Albergo.Services;
 using System.Diagnostics;
-
 
 
 namespace Progetto_Albergo.Controllers
@@ -19,11 +17,11 @@ namespace Progetto_Albergo.Controllers
         private readonly IPrenotazioneService _prenotazioneService;
         private readonly IServizioService _servizioService;
 
-        public HomeController(ILogger<HomeController> logger , IClienteService clienteService, ICameraService cameraService, IPrenotazioneService prenotazioneService, IServizioService servizioService)
+        public HomeController(ILogger<HomeController> logger, IClienteService clienteService, ICameraService cameraService, IPrenotazioneService prenotazioneService, IServizioService servizioService)
         {
             _logger = logger;
-            _cameraService = cameraService;
             _clienteService = clienteService;
+            _cameraService = cameraService;
             _prenotazioneService = prenotazioneService;
             _servizioService = servizioService;
         }
@@ -38,20 +36,16 @@ namespace Progetto_Albergo.Controllers
             return View();
         }
 
-
         // CLIENTE
-
 
         public IActionResult AddCliente()
         {
-
             return View();
         }
 
         [HttpPost]
         public IActionResult AddCliente(Cliente cliente)
         {
-
             if (ModelState.IsValid)
             {
                 _clienteService.AddCliente(cliente);
@@ -64,14 +58,12 @@ namespace Progetto_Albergo.Controllers
 
         public IActionResult AddPrenotazione()
         {
-
             return View();
         }
 
         [HttpPost]
-        public IActionResult Addprenotazione(Prenotazione prenotazione)
+        public IActionResult AddPrenotazione(Prenotazione prenotazione)
         {
-
             if (ModelState.IsValid)
             {
                 _prenotazioneService.AddPrenotazione(prenotazione);
@@ -79,7 +71,6 @@ namespace Progetto_Albergo.Controllers
             }
             return View(prenotazione);
         }
-
 
         public IActionResult InserisciCodiceFiscale()
         {
@@ -90,24 +81,18 @@ namespace Progetto_Albergo.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Chiamata asincrona al servizio
                 var prenotazioniByCodiceFiscale = await _prenotazioneService.GetPrenotazioniByCodiceFiscaleAsync(model.CodiceFiscale);
-
-                // Ritorna la vista con le prenotazioni
                 return View("GetPrenotazioniByCodiceFiscale", prenotazioniByCodiceFiscale);
             }
-
-            // Ritorna la vista con errori se il modello non è valido
             return View(model);
         }
-
 
         public IActionResult PrenotazioneInfo(int id)
         {
             var prenotazione = _prenotazioneService.GetPrenotazioneById(id);
             if (prenotazione == null)
             {
-                return NotFound(); // Gestisci il caso in cui la prenotazione non esiste
+                return NotFound();
             }
 
             var serviziAggiuntivi = _prenotazioneService.GetServiziAggiuntiviByPrenotazione(id);
@@ -124,31 +109,26 @@ namespace Progetto_Albergo.Controllers
             return View(viewModel);
         }
 
-
         public IActionResult Prenotazioni()
         {
             var prenotazioni = _prenotazioneService.GetAllPrenotazioni();
             return View(prenotazioni);
         }
 
-
         public async Task<IActionResult> PrenotazioniPensioneCompleta()
         {
             try
             {
-                // Chiamata asincrona al servizio
                 var totalePrenotazioni = await _prenotazioneService.GetTotalePrenotazioniPensioneCompletaAsync();
                 ViewBag.TotalePrenotazioni = totalePrenotazioni;
                 return View();
             }
             catch (Exception ex)
             {
-                // Gestione dell'eccezione e restituzione di una vista di errore o di un messaggio di errore
                 ViewBag.ErrorMessage = "Errore nel recuperare il totale delle prenotazioni per pensione completa. Dettagli tecnici: " + ex.Message;
-                return View("Error"); // Assumi che "Error" sia una vista che mostra il messaggio di errore
+                return View("Error");
             }
         }
-
 
         // SERVIZI
 
@@ -175,16 +155,15 @@ namespace Progetto_Albergo.Controllers
             {
                 var servizio = new Prenotazioni_Servizi
                 {
-                    FK_Prenotazione = model.IdPrenotazione,
-                    FK_Servizio = model.ServizioId,
-                    Quantita = model.Quantita,
                     Data = model.Data,
-                    Descrizione = _servizioService.GetServizioById(model.ServizioId).Descrizione
+                    Quantita = model.Quantita,
+                    Prezzo = model.Prezzo,
+                    FK_Prenotazione = model.IdPrenotazione,
+                    FK_Servizio = model.ServizioId
                 };
 
                 _prenotazioneService.AddServizio(servizio);
-
-                return RedirectToAction("Dettaglio", new { id = model.IdPrenotazione });
+                return RedirectToAction("PrenotazioneInfo", new { id = model.IdPrenotazione });
             }
 
             // Ricarica i servizi disponibili se la validazione fallisce
@@ -196,9 +175,6 @@ namespace Progetto_Albergo.Controllers
 
             return View(model);
         }
-
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
