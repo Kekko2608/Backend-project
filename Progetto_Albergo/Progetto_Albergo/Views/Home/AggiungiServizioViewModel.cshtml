@@ -1,0 +1,30 @@
+﻿@model Progetto_Albergo.Models.AggiungiServizioViewModel
+
+@{
+    ViewData["Title"] = "Aggiungi Servizio alla Prenotazione";
+}
+
+<h2>Aggiungi Servizio alla Prenotazione</h2>
+
+<form asp-action="AggiungiServizio" method="post">
+    <input type="hidden" asp-for="IdPrenotazione" />
+
+    <div class="form-group">
+        <label for="ServizioId">Servizio</label>
+        <select asp-for="ServizioId" asp-items="Model.ServiziDisponibili" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label for="Quantita">Quantità</label>
+        <input asp-for="Quantita" class="form-control" />
+        <span asp-validation-for="Quantita" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Data">Data</label>
+        <input asp-for="Data" class="form-control" type="date" />
+        <span asp-validation-for="Data" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Aggiungi Servizio</button>
+</form>

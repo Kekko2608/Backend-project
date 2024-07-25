@@ -9,9 +9,10 @@ builder.Services.AddControllersWithViews();
 
 builder.Services
     .AddScoped<IClienteService, ClienteService>()
-     .AddScoped<ICameraService, CameraService>()
-     .AddScoped<IAuthService, AuthService>()
-      .AddScoped<IPrenotazioneService, PrenotazioneService>();
+    .AddScoped<ICameraService, CameraService>()
+    .AddScoped<IAuthService, AuthService>()
+    .AddScoped<IServizioService, ServizioService>()
+    .AddScoped<IPrenotazioneService, PrenotazioneService>();
 
 
 

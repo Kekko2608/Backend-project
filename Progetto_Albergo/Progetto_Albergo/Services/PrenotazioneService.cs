@@ -342,6 +342,36 @@ WHERE
             }
         }
 
+        public void AddServizio(Prenotazioni_Servizi servizio)
+        {
+            const string ADD_SERVIZIO_COMMAND = @"
+        INSERT INTO [dbo].[PRENOTAZIONI_SERVIZI]
+        (Data, Quantita, Prezzo, FK_Prenotazione, FK_Servizio, Descrizione)
+        VALUES (@Data, @Quantita, @Prezzo, @FK_Prenotazione, @FK_Servizio, @Descrizione)";
+
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    using (var command = new SqlCommand(ADD_SERVIZIO_COMMAND, connection))
+                    {
+                        command.Parameters.AddWithValue("@Data", servizio.Data);
+                        command.Parameters.AddWithValue("@Quantita", servizio.Quantita);
+                        command.Parameters.AddWithValue("@Prezzo", servizio.Prezzo);
+                        command.Parameters.AddWithValue("@FK_Prenotazione", servizio.FK_Prenotazione);
+                        command.Parameters.AddWithValue("@FK_Servizio", servizio.FK_Servizio);
+                        command.Parameters.AddWithValue("@Descrizione", servizio.Descrizione);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Errore durante l'aggiunta del servizio. Dettagli tecnici: " + ex.Message);
+            }
+        }
     }
 }
 

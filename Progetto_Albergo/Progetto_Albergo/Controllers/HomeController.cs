@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Progetto_Albergo.Models;
 using Progetto_Albergo.Services;
 using System.Diagnostics;
@@ -14,13 +16,15 @@ namespace Progetto_Albergo.Controllers
         private readonly IClienteService _clienteService;
         private readonly ICameraService _cameraService;
         private readonly IPrenotazioneService _prenotazioneService;
+        private readonly IServizioService _servizioService;
 
-        public HomeController(ILogger<HomeController> logger , IClienteService clienteService, ICameraService cameraService, IPrenotazioneService prenotazioneService)
+        public HomeController(ILogger<HomeController> logger , IClienteService clienteService, ICameraService cameraService, IPrenotazioneService prenotazioneService, IServizioService servizioService)
         {
             _logger = logger;
             _cameraService = cameraService;
             _clienteService = clienteService;
             _prenotazioneService = prenotazioneService;
+            _servizioService = servizioService;
         }
 
         public IActionResult Index()
@@ -143,6 +147,56 @@ namespace Progetto_Albergo.Controllers
                 return View("Error"); // Assumi che "Error" sia una vista che mostra il messaggio di errore
             }
         }
+
+
+        // SERVIZI
+
+        public IActionResult AggiungiServizio(int id)
+        {
+            var serviziDisponibili = _servizioService.GetAllServizi();
+            var viewModel = new AggiungiServizioViewModel
+            {
+                IdPrenotazione = id,
+                ServiziDisponibili = serviziDisponibili.Select(s => new SelectListItem
+                {
+                    Value = s.IdServizio.ToString(),
+                    Text = s.Descrizione
+                }).ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult AggiungiServizio(AggiungiServizioViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var servizio = new Prenotazioni_Servizi
+                {
+                    FK_Prenotazione = model.IdPrenotazione,
+                    FK_Servizio = model.ServizioId,
+                    Quantita = model.Quantita,
+                    Data = model.Data,
+                    Descrizione = _servizioService.GetServizioById(model.ServizioId).Descrizione
+                };
+
+                _prenotazioneService.AddServizio(servizio);
+
+                return RedirectToAction("Dettaglio", new { id = model.IdPrenotazione });
+            }
+
+            // Ricarica i servizi disponibili se la validazione fallisce
+            model.ServiziDisponibili = _servizioService.GetAllServizi().Select(s => new SelectListItem
+            {
+                Value = s.IdServizio.ToString(),
+                Text = s.Descrizione
+            }).ToList();
+
+            return View(model);
+        }
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

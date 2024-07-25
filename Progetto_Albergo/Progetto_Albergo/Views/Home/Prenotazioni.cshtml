@@ -18,7 +18,8 @@
             <th>Caparra</th>
             <th>Tariffa</th>
             <th>Descrizione</th>
-            <th>Dettagli</th> <!-- Aggiungi questa intestazione -->
+            <th>Dettagli</th>
+            <th>Aggiungi Servizio</th> <!-- Nuova intestazione per il pulsante -->
         </tr>
     </thead>
     <tbody>
@@ -38,6 +39,12 @@
                     <!-- Pulsante Dettaglio -->
                     <a href="@Url.Action("PrenotazioneInfo", "Home", new { id = prenotazione.IdPrenotazione })" class="btn btn-info">
                         Dettaglio
+                    </a>
+                </td>
+                <td>
+                    <!-- Pulsante Aggiungi Servizio -->
+                    <a href="@Url.Action("AggiungiServizio", "Home", new { id = prenotazione.IdPrenotazione })" class="btn btn-primary">
+                        Aggiungi Servizio
                     </a>
                 </td>
             </tr>

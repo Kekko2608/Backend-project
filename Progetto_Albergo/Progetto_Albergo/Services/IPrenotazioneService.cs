@@ -11,5 +11,6 @@ namespace Progetto_Albergo.Services
         decimal GetTotaleServiziAggiuntivi(int idPrenotazione);
         List<Prenotazione> GetAllPrenotazioni();
         Task<int> GetTotalePrenotazioniPensioneCompletaAsync();
+        void AddServizio(Prenotazioni_Servizi servizio);
     }       
 }
