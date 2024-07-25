@@ -10,6 +10,7 @@ using System.Diagnostics;
 
 namespace Progetto_Albergo.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

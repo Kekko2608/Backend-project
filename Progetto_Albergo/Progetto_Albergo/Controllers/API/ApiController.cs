@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Progetto_Albergo.Services;
 using Progetto_Albergo.Models;
-
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Progetto_Albergo.Controllers.API
 {
-    [Route("API/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ApiController : ControllerBase
     {

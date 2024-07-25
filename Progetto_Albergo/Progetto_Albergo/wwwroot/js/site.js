@@ -1,4 +1,4 @@
-﻿let basePath = '/API/ApiController';
+﻿let basePath = '/APi/ApiController';
 
 $(() => {
     // Gestisce il click sul pulsante di ricerca delle prenotazioni
@@ -47,11 +47,11 @@ function getTotalePensioneCompleta() {
         method: 'GET',
         success: (data) => {
             // Aggiorna il testo nella view con il totale delle prenotazioni
-            $("#totalPensioneCompleta").text(`Numero totale di prenotazioni per soggiorni di tipo "Pensione Completa": ${data}`);
+            $("#totalPensioneCompleta").html(`Numero totale di prenotazioni per soggiorni di tipo "Pensione Completa": <strong>${data}</strong>`);
         },
         error: (xhr, status, error) => {
             // Gestisce gli errori
-            $("#totalPensioneCompleta").text('Errore durante il recupero del totale delle prenotazioni: ' + error);
+            $("#totalPensioneCompleta").html('Errore durante il recupero del totale delle prenotazioni: ' + error);
         }
     });
 }
