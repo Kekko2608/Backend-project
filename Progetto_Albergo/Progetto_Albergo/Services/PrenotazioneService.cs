@@ -47,23 +47,24 @@ namespace Progetto_Albergo.Services
             p.IdPrenotazione = @IdPrenotazione";
 
         private const string SERVIZI_AGGIUNTIVI_BY_PRENOTAZIONE = @"
-SELECT
-    sa.IdServizio,
-    sa.Descrizione,
-    ps.Data,
-    ps.Quantita,
-    ps.Prezzo
-FROM
-    [dbo].[SERVIZIO_AGGIUNTIVO] sa
-INNER JOIN
-    [dbo].[PRENOTAZIONI_SERVIZI] ps ON sa.IdServizio = ps.FK_Servizio
-WHERE
-    ps.FK_Prenotazione = @IdPrenotazione";
+    SELECT
+        sa.IdServizio,
+        sa.Descrizione,
+        ps.Data,
+        ps.Quantita,
+        ps.Prezzo
+    FROM
+        [dbo].[SERVIZIO_AGGIUNTIVO] sa
+    INNER JOIN
+        [dbo].[PRENOTAZIONI_SERVIZI] ps ON sa.IdServizio = ps.FK_Servizio
+    WHERE
+        ps.FK_Prenotazione = @IdPrenotazione";
 
         private const string TOTALE_SERVIZI_AGGIUNTIVI = @"
     SELECT SUM(ps.Prezzo * ps.Quantita) 
     FROM [dbo].[PRENOTAZIONI_SERVIZI] ps
     WHERE ps.FK_Prenotazione = @IdPrenotazione";
+       
         private const string ALL_PRENOTAZIONI = @"
     SELECT
         p.IdPrenotazione,
