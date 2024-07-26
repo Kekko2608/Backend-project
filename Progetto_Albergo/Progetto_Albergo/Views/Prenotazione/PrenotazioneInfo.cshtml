@@ -4,55 +4,47 @@
     ViewData["Title"] = "Dettaglio Prenotazione";
 }
 
-<h2>Dettaglio Prenotazione</h2>
+<div class="container mt-4">
+    <h2 class="mb-4">Dettaglio Prenotazione</h2>
 
-<div>
-    <h4>Numero Stanza</h4>
-    <p>@Model.PrenotazioneInfo.NumeroStanza</p>
-</div>
-<div>
-    <h4>Periodo</h4>
-    <p>@Model.PrenotazioneInfo.DataInizio.ToString("dd/MM/yyyy") - @Model.PrenotazioneInfo.DataFine.ToString("dd/MM/yyyy")</p>
-</div>
-<div>
-    <h4>Tariffa</h4>
-    <p>@Model.PrenotazioneInfo.Tariffa</p>
-</div>
-<div>
-    <h4>Caparra</h4>
-    <p>@Model.PrenotazioneInfo.Caparra</p>
-</div>
-<div>
-    <h4>Importo da Saldare</h4>
-    <p>@Model.ImportoDaSaldare.ToString("C")</p>
-</div>
+    <!-- Riepilogo della Prenotazione -->
+    <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">Riepilogo Prenotazione</h4>
+        <p class="mb-0"><strong>Numero Stanza:</strong> @Model.PrenotazioneInfo.NumeroStanza</p>
+        <p class="mb-0"><strong>Periodo:</strong> @Model.PrenotazioneInfo.DataInizio.ToString("dd/MM/yyyy") - @Model.PrenotazioneInfo.DataFine.ToString("dd/MM/yyyy")</p>
+        <p class="mb-0"><strong>Tariffa:</strong> @Model.PrenotazioneInfo.Tariffa.ToString("C")</p>
+        <p class="mb-0"><strong>Caparra:</strong> @Model.PrenotazioneInfo.Caparra.ToString("C")</p>
+        <p class="mb-0"><strong>Importo da Saldare:</strong> @Model.ImportoDaSaldare.ToString("C")</p>
+    </div>
 
-<h3>Servizi Aggiuntivi</h3>
-@if (Model.ServiziAggiuntivi != null && Model.ServiziAggiuntivi.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                
-                <th>Data</th>
-                <th>Quantità</th>
-                <th>Prezzo</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var servizio in Model.ServiziAggiuntivi)
-            {
+    <!-- Servizi Aggiuntivi -->
+    <h3 class="mb-4">Servizi Aggiuntivi</h3>
+    @if (Model.ServiziAggiuntivi != null && Model.ServiziAggiuntivi.Count > 0)
+    {
+        <table class="table table-hover">
+            <thead class="thead-light">
                 <tr>
-                    
-                    <td>@servizio.Data.ToString("dd/MM/yyyy")</td>
-                    <td>@servizio.Quantita</td>
-                    <td>@servizio.Prezzo.ToString("C")</td>
+                    <th>Data</th>
+                    <th>Quantità</th>
+                    <th>Prezzo</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Nessun servizio aggiuntivo richiesto.</p>
-}
+            </thead>
+            <tbody>
+                @foreach (var servizio in Model.ServiziAggiuntivi)
+                {
+                    <tr>
+                        <td>@servizio.Data.ToString("dd/MM/yyyy")</td>
+                        <td>@servizio.Quantita</td>
+                        <td>@servizio.Prezzo.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            Nessun servizio aggiuntivo richiesto.
+        </div>
+    }
+</div>
