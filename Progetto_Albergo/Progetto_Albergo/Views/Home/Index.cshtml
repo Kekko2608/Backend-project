@@ -5,35 +5,42 @@
     var friendlyName = User.Claims.FirstOrDefault(c => c.Type == "FriendlyName")?.Value ?? currentUser;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome @friendlyName </h1>
-    
+<div class="container mt-5">
+    <div class="welcome-box text-center mb-5">
+        <h1 class="display-4 fw-bold fst-italic">Accesso effettuato da : @friendlyName</h1>
+    </div>
+
+    <div class="row main-actions">
+        <div class="col-md-4 mb-3">
+            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="AddCliente">
+                <i class="fas fa-user-plus"></i> Aggiungi nuovo cliente
+            </a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a class="btn btn-success btn-lg btn-block" asp-area="" asp-controller="Prenotazione" asp-action="AddPrenotazione">
+                <i class="fas fa-calendar-plus"></i> Aggiungi nuova prenotazione
+            </a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a class="btn btn-warning btn-lg btn-block" asp-area="" asp-controller="Prenotazione" asp-action="Prenotazioni">
+                <i class="fas fa-list"></i> Tutte le prenotazioni
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-5 extra-actions">
+        <div class="col-12">
+            <h2 class="text-center">Extra</h2>
+        </div>
+        <div class="col-md-6 mb-3">
+            <a class="btn btn-info btn-lg btn-block" asp-area="" asp-controller="Prenotazione" asp-action="InserisciCodiceFiscale">
+                <i class="fas fa-search"></i> Trova prenotazioni tramite CF
+            </a>
+        </div>
+        <div class="col-md-6 mb-3">
+            <a class="btn btn-danger btn-lg btn-block" asp-area="" asp-controller="Prenotazione" asp-action="PrenotazioniPensioneCompleta">
+                <i class="fas fa-concierge-bell"></i> Prenotazioni "Pensione Completa"
+            </a>
+        </div>
+    </div>
 </div>
-
-<a class="text-dark text-decoration-none" asp-area="" asp-controller="Home" asp-action="AddCliente">
-    Aggiungi nuovo cliente
-</a>
-
-<p>
-    <a class="text-dark text-decoration-none" asp-area="" asp-controller="Prenotazione" asp-action="AddPrenotazione">
-        Aggiungi nuova prenotazione
-    </a>
-</p>
-
-<p>
-    <a class="text-dark text-decoration-none" asp-area="" asp-controller="Home" asp-action="InserisciCodiceFiscale">
-        trova prenotazioni tramite CF
-    </a>
-</p>
-
-<p>
-    <a class="text-dark text-decoration-none" asp-area="" asp-controller="Prenotazione" asp-action="Prenotazioni">
-       Tutte le prenotazioni
-    </a>
-</p>
-
-<p>
-    <a class="text-dark text-decoration-none" asp-area="" asp-controller="Prenotazione" asp-action="PrenotazioniPensioneCompleta">
-        Prenotazioni "Pensione Completa"
-    </a>
-</p>

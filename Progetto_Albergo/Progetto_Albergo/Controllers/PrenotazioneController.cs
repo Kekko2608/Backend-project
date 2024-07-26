@@ -90,8 +90,6 @@ namespace Progetto_Albergo.Controllers
             }
         }
 
-
-
         public IActionResult Index()
         {
             return View();

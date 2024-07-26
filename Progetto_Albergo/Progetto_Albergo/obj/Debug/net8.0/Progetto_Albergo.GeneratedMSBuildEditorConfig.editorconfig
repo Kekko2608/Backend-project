@@ -46,10 +46,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/InserisciCodiceFiscale.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnNlcmlzY2lDb2RpY2VGaXNjYWxlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Prenotazione/GetprenotazioniByCodiceFiscale.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlbm90YXppb25lXEdldHByZW5vdGF6aW9uaUJ5Q29kaWNlRmlzY2FsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Prenotazione/InserisciCodiceFiscale.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlbm90YXppb25lXEluc2VyaXNjaUNvZGljZUZpc2NhbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/franc/Desktop/Epicode BE/Esercitazioni-BE/Progetto_Albergo/Progetto_Albergo/Views/Prenotazione/PrenotazioneInfo.cshtml]

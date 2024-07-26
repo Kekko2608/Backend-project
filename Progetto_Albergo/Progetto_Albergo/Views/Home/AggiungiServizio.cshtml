@@ -4,42 +4,57 @@
     ViewData["Title"] = "Aggiungi Servizio";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
 
-<form asp-action="AggiungiServizio" method="post">
-    <input type="hidden" asp-for="IdPrenotazione" />
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form asp-action="AggiungiServizio" method="post">
+                        <input type="hidden" asp-for="IdPrenotazione" />
 
-    <div class="form-group">
-        <label asp-for="ServizioId" class="control-label"></label>
-        <select asp-for="ServizioId" asp-items="Model.ServiziDisponibili" class="form-control">
-            <option value="">-- Seleziona un servizio --</option>
-        </select>
-        <span asp-validation-for="ServizioId" class="text-danger"></span>
+                        <div class="form-group mb-3">
+                            <label asp-for="ServizioId" class="form-label"></label>
+                            <select asp-for="ServizioId" asp-items="Model.ServiziDisponibili" class="form-control">
+                                <option value="">-- Seleziona un servizio --</option>
+                            </select>
+                            <span asp-validation-for="ServizioId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Quantita" class="form-label"></label>
+                            <input asp-for="Quantita" class="form-control" />
+                            <span asp-validation-for="Quantita" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Prezzo" class="form-label"></label>
+                            <input asp-for="Prezzo" class="form-control" type="number" step="0.01" />
+                            <span asp-validation-for="Prezzo" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Data" class="form-label"></label>
+                            <input asp-for="Data" type="date" class="form-control" />
+                            <span asp-validation-for="Data" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">Aggiungi Servizio</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="@Url.Action("Prenotazioni", "Home", new { id = Model.IdPrenotazione })" class="btn btn-secondary">Annulla</a>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Quantita" class="control-label"></label>
-        <input asp-for="Quantita" class="form-control" />
-        <span asp-validation-for="Quantita" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Prezzo" class="control-label"></label>
-        <input asp-for="Prezzo" class="form-control" type="number" step="0.01" />
-        <span asp-validation-for="Prezzo" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Data" class="control-label"></label>
-        <input asp-for="Data" type="date" class="form-control" />
-        <span asp-validation-for="Data" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Aggiungi Servizio</button>
-    </div>
-</form>
-
-<div>
-    <a href="@Url.Action("Prenotazioni", "Home", new { id = Model.IdPrenotazione })" class="btn btn-secondary">Annulla</a>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

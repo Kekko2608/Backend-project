@@ -4,50 +4,54 @@
     ViewData["Title"] = "Lista Prenotazioni";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Data</th>
-            <th>Numero</th>
-            <th>Anno</th>
-            <th>Dal</th>
-            <th>Al</th>
-            <th>Caparra</th>
-            <th>Tariffa</th>
-            <th>Descrizione</th>
-            <th>Dettagli</th>
-            <th>Aggiungi Servizio</th> <!-- Nuova intestazione per il pulsante -->
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var prenotazione in Model)
-        {
-            <tr>
-                <td>@prenotazione.IdPrenotazione</td>
-                <td>@prenotazione.Data.ToShortDateString()</td>
-                <td>@prenotazione.Numero</td>
-                <td>@prenotazione.Anno</td>
-                <td>@prenotazione.Dal.ToShortDateString()</td>
-                <td>@prenotazione.Al.ToShortDateString()</td>
-                <td>@prenotazione.Caparra</td>
-                <td>@prenotazione.Tariffa</td>
-                <td>@prenotazione.Descrizione</td>
-                <td>
-                    <!-- Pulsante Dettaglio -->
-                    <a href="@Url.Action("PrenotazioneInfo", "Prenotazione", new { id = prenotazione.IdPrenotazione })" class="btn btn-info">
-                        Dettaglio
-                    </a>
-                </td>
-                <td>
-                    <!-- Pulsante Aggiungi Servizio -->
-                    <a href="@Url.Action("AggiungiServizio", "Home", new { id = prenotazione.IdPrenotazione })" class="btn btn-primary">
-                        Aggiungi Servizio
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Numero</th>
+                    <th>Anno</th>
+                    <th>Dal</th>
+                    <th>Al</th>
+                    <th>Caparra</th>
+                    <th>Tariffa</th>
+                    <th>Descrizione</th>
+                    <th>Dettagli</th>
+                    <th>Aggiungi Servizio</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var prenotazione in Model)
+                {
+                    <tr>
+                        <td>@prenotazione.IdPrenotazione</td>
+                        <td>@prenotazione.Data.ToShortDateString()</td>
+                        <td>@prenotazione.Numero</td>
+                        <td>@prenotazione.Anno</td>
+                        <td>@prenotazione.Dal.ToShortDateString()</td>
+                        <td>@prenotazione.Al.ToShortDateString()</td>
+                        <td>@prenotazione.Caparra</td>
+                        <td>@prenotazione.Tariffa</td>
+                        <td>@prenotazione.Descrizione</td>
+                        <td>
+                            <a href="@Url.Action("PrenotazioneInfo", "Prenotazione", new { id = prenotazione.IdPrenotazione })" class="btn btn-info">
+                                Dettaglio
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("AggiungiServizio", "Home", new { id = prenotazione.IdPrenotazione })" class="btn btn-primary">
+                                Aggiungi Servizio
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

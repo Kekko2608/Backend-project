@@ -2,9 +2,13 @@
     ViewData["Title"] = "Prenotazioni Pensione Completa";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
 
-<div id="totalPensioneCompleta">
-    <!-- Il totale delle prenotazioni sarà inserito qui tramite jQuery -->
-    Numero totale di prenotazioni per soggiorni di tipo "Pensione Completa": <strong>@ViewBag.TotalePrenotazioni</strong>
+    <div class="alert alert-info" role="alert">
+        Numero totale di prenotazioni per soggiorni di tipo "Pensione Completa":
+        <strong>@ViewBag.TotalePrenotazioni</strong>
+    </div>
+
+
 </div>

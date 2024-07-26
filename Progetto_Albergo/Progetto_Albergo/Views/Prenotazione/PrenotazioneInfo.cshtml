@@ -33,7 +33,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Descrizione</th>
+                
                 <th>Data</th>
                 <th>Quantità</th>
                 <th>Prezzo</th>
@@ -43,7 +43,7 @@
             @foreach (var servizio in Model.ServiziAggiuntivi)
             {
                 <tr>
-                    <td>@servizio.Descrizione</td>
+                    
                     <td>@servizio.Data.ToString("dd/MM/yyyy")</td>
                     <td>@servizio.Quantita</td>
                     <td>@servizio.Prezzo.ToString("C")</td>

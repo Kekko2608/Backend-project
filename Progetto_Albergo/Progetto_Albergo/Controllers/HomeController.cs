@@ -17,12 +17,11 @@ namespace Progetto_Albergo.Controllers
         private readonly IPrenotazioneService _prenotazioneService;
         private readonly IServizioService _servizioService;
 
-        public HomeController(ILogger<HomeController> logger, IClienteService clienteService, ICameraService cameraService, IPrenotazioneService prenotazioneService, IServizioService servizioService)
+        public HomeController(ILogger<HomeController> logger, IClienteService clienteService, ICameraService cameraService, IServizioService servizioService)
         {
             _logger = logger;
             _clienteService = clienteService;
             _cameraService = cameraService;
-            _prenotazioneService = prenotazioneService;
             _servizioService = servizioService;
         }
 
@@ -54,9 +53,7 @@ namespace Progetto_Albergo.Controllers
             return View(cliente);
         }
 
-        // PRENOTAZIONE 
-
-       
+        
 
         // SERVIZI
 
@@ -103,6 +100,9 @@ namespace Progetto_Albergo.Controllers
 
             return View(model);
         }
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

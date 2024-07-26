@@ -1,0 +1,24 @@
+﻿@model Progetto_Albergo.Models.CodiceFiscaleViewModel
+
+@{
+    ViewData["Title"] = "Inserisci Codice Fiscale";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form id="codiceFiscaleForm" asp-action="GetPrenotazioniByCodiceFiscale" method="get" class="p-4 border rounded bg-light shadow-sm">
+                <div class="form-group mb-3">
+                    <label asp-for="CodiceFiscale" class="form-label">Codice Fiscale</label>
+                    <input asp-for="CodiceFiscale" class="form-control" id="cf" placeholder="Inserisci codice fiscale" />
+                    <span asp-validation-for="CodiceFiscale" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Cerca</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -236,12 +236,11 @@ namespace Progetto_Albergo.Services
                                 var servizio = new Prenotazioni_Servizi
                                 {
                                     IdPrenotServizi = reader.GetInt32(0),
-                                    Descrizione = reader.GetString(1),  
-                                    Data = reader.GetDateTime(2),
-                                    Quantita = reader.GetInt32(3),
-                                    Prezzo = reader.GetDecimal(4),
+                                    Data = reader.GetDateTime(1),
+                                    Quantita = reader.GetInt32(2),
+                                    Prezzo = reader.GetDecimal(3),
                                     FK_Prenotazione = idPrenotazione,
-                                    FK_Servizio = reader.GetInt32(5)  
+                                    FK_Servizio = reader.GetInt32(4)  
                                 };
                                 result.Add(servizio);
                             }
