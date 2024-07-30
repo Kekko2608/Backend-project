@@ -16,6 +16,6 @@ namespace Progetto_Pizzeria.Models
         public required string Immagine { get; set; }
         [Range(0, 60)]
         public int TempoDiConsegna { get; set; }
-        public List<Ingrediente> Ingredienti { get; set; } = = new List<Ingrediente>();
+        public List<Ingrediente> Ingredienti { get; set; }  = new List<Ingrediente>();
     }
 }

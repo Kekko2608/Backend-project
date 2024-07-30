@@ -11,6 +11,6 @@ namespace Progetto_Pizzeria.Models
         [Required]
         [StringLength(50)]
         public required string Nome { get; set; }
-        public List<Prodotto> Prodotti { get; set; } = [];
+        public List<Prodotto> Prodotti { get; set; } = new List<Prodotto>();
     }
 }

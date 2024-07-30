@@ -13,5 +13,7 @@ namespace Progetto_Pizzeria.Context
         public virtual DbSet<ProdottoOrdinato> Prodottiordinati { get; set; }
 
         public DataContext(DbContextOptions<DataContext> opt) : base(opt) { }
+
+
     }
 }

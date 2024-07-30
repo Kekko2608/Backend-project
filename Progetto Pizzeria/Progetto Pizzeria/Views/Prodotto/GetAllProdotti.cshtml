@@ -1,5 +1,4 @@
-﻿
-@model List<Progetto_Pizzeria.Models.Prodotto>  
+﻿@model List<Progetto_Pizzeria.Models.Prodotto>
 
 <h1>Lista Pizze</h1>
 
@@ -13,7 +12,13 @@
                 <strong>Prezzo:</strong> @prodotto.Prezzo<br />
                 <strong>Immagine:</strong> <img src="@prodotto.Immagine" alt="@prodotto.Nome" style="width:50px;height:50px;" /><br />
                 <strong>Tempo di Consegna:</strong> @prodotto.TempoDiConsegna<br />
-                <strong>Ingredienti:</strong> @prodotto.Ingredienti<br />
+                <strong>Ingredienti:</strong>
+                <ul>
+                    @foreach (var ingrediente in prodotto.Ingredienti)
+                    {
+                        <li>@ingrediente.Nome</li> 
+                    }
+                </ul>
             </li>
         }
     </ul>

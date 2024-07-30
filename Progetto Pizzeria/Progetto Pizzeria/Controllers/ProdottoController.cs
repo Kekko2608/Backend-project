@@ -28,47 +28,56 @@ namespace Progetto_Pizzeria.Controllers
 
 
         [HttpGet]
-        public IActionResult CreaProdotto()
+        public async Task<IActionResult> CreaProdotto()
         {
-            return View();
+            var viewModel = new ProdottoViewModel
+            {
+                Ingredienti = await _ctx.Ingredienti.ToListAsync()
+            };
+
+            return View(viewModel);
         }
+
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreaProdotto(Prodotto model)
+        public async Task<IActionResult> CreaProdotto(ProdottoViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var prodotto = new Prodotto
                 {
-                    Nome = model.Nome!,
-                    Prezzo = model.Prezzo!,
-                    Immagine = model.Immagine!,
-                    TempoDiConsegna = model.TempoDiConsegna!,
-                    Ingredienti = model.Ingredienti!,
+                    Nome = model.Prodotto.Nome,
+                    Prezzo = model.Prodotto.Prezzo,
+                    Immagine = model.Prodotto.Immagine,
+                    TempoDiConsegna = model.Prodotto.TempoDiConsegna,
+                    Ingredienti = await _ctx.Ingredienti
+                        .Where(i => model.SelectedIngredienti.Contains(i.Id))
+                        .ToListAsync()
                 };
+
                 _ctx.Prodotti.Add(prodotto);
                 await _ctx.SaveChangesAsync();
-                return RedirectToAction(nameof(GetAllProdotti)); 
+
+                return RedirectToAction(nameof(GetAllProdotti));
             }
-            return View("Index", model);
+
+            // Se c'è un errore, ricarica la lista degli ingredienti
+            model.Ingredienti = await _ctx.Ingredienti.ToListAsync();
+            return View(model);
         }
 
 
         public async Task<IActionResult> GetAllProdotti()
         {
-            var prodotti = await _ctx.Prodotti.ToListAsync();
-            return View(prodotti); 
+            var prodotti = await _ctx.Prodotti
+                .Include(p => p.Ingredienti) // Include gli ingredienti associati
+                .ToListAsync();
+            return View(prodotti);
         }
 
-
-
-
-
     }
-
-
 
 }
 
