@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Progetto_Pizzeria.Context;
+using Progetto_Pizzeria.Services.ProdottoService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,7 @@ builder.Services.AddControllersWithViews();
 var conn = builder.Configuration.GetConnectionString("SqlServer")!;
 builder.Services
     .AddDbContext<DataContext>(opt => opt.UseSqlServer(conn));
-    
+
 
 var app = builder.Build();
 

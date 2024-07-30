@@ -18,5 +18,6 @@ namespace Progetto_Pizzeria.Models
         [StringLength(20)]
         public required string Password { get; set; }
         public List<Role> Roles { get; set; } = [];
+
     }
 }

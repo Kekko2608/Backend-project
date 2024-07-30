@@ -5,6 +5,6 @@ namespace Progetto_Pizzeria.Services.ProdottoService
     public interface IProdottoService
     {
         Prodotto CreaProdotto(Prodotto prodotto);
-        public List<Prodotto> GetAllProdotti();
+        Task<List<Prodotto>> GetAllProdotti();
     }
 }

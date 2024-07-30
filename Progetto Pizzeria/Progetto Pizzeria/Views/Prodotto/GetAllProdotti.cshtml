@@ -1,0 +1,24 @@
+﻿
+@model List<Progetto_Pizzeria.Models.Prodotto>  
+
+<h1>Lista Pizze</h1>
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var prodotto in Model)
+        {
+            <li>
+                <strong>Nome:</strong> @prodotto.Nome<br />
+                <strong>Prezzo:</strong> @prodotto.Prezzo<br />
+                <strong>Immagine:</strong> <img src="@prodotto.Immagine" alt="@prodotto.Nome" style="width:50px;height:50px;" /><br />
+                <strong>Tempo di Consegna:</strong> @prodotto.TempoDiConsegna<br />
+                <strong>Ingredienti:</strong> @prodotto.Ingredienti<br />
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <div class="alert alert-warning">Nessun dato</div>
+}
