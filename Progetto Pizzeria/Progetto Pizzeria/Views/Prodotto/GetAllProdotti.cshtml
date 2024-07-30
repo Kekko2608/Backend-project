@@ -4,24 +4,30 @@
 
 @if (Model.Any())
 {
-    <ul>
+    <div class="row">
         @foreach (var prodotto in Model)
         {
-            <li>
-                <strong>Nome:</strong> @prodotto.Nome<br />
-                <strong>Prezzo:</strong> @prodotto.Prezzo<br />
-                <strong>Immagine:</strong> <img src="@prodotto.Immagine" alt="@prodotto.Nome" style="width:50px;height:50px;" /><br />
-                <strong>Tempo di Consegna:</strong> @prodotto.TempoDiConsegna<br />
-                <strong>Ingredienti:</strong>
-                <ul>
-                    @foreach (var ingrediente in prodotto.Ingredienti)
-                    {
-                        <li>@ingrediente.Nome</li> 
-                    }
-                </ul>
-            </li>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@prodotto.Immagine" class="card-img-top" alt="@prodotto.Nome" style="height:200px; object-fit:cover;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@prodotto.Nome</h5>
+                        <p class="card-text">
+                            <strong>Prezzo:</strong> @prodotto.Prezzo <br />
+                            <strong>Tempo di Consegna:</strong> @prodotto.TempoDiConsegna
+                        </p>
+                        <h6>Ingredienti:</h6>
+                        <ul class="list-unstyled">
+                            @foreach (var ingrediente in prodotto.Ingredienti)
+                            {
+                                <li>@ingrediente.Nome</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
         }
-    </ul>
+    </div>
 }
 else
 {
