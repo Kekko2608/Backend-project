@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Progetto_Pizzeria.Context;
 using Progetto_Pizzeria.Services.ProdottoService;
@@ -11,8 +12,23 @@ var conn = builder.Configuration.GetConnectionString("SqlServer")!;
 builder.Services
     .AddDbContext<DataContext>(opt => opt.UseSqlServer(conn));
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+       .AddCookie(options =>
+       {
+           options.LoginPath = "/Account/Login";
+           options.LogoutPath = "/Account/Logout";
+           options.AccessDeniedPath = "/Account/Login";
+       });
+
+builder.Services
+    .AddAuthorizationBuilder()
+    .AddPolicy("Autenticato", cfg => cfg.RequireAuthenticatedUser())
+    .AddPolicy("AdminOnly", cfg => cfg.RequireRole("Amministratore"));
+  
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -28,6 +44,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

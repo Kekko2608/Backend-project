@@ -1,32 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Progetto_Pizzeria.Context;
 using Progetto_Pizzeria.Models;
-using Progetto_Pizzeria.Services.ProdottoService;
 
 namespace Progetto_Pizzeria.Controllers
 {
+   
     public class ProdottoController : Controller
     {
-
-        private readonly ILogger<HomeController> _logger;
         private readonly DataContext _ctx;
-      
 
-        public ProdottoController(DataContext dataContext, ILogger<HomeController> logger)
+        public ProdottoController(DataContext dataContext)
         {
             _ctx = dataContext;
-            _logger = logger;
-           
         }
 
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-
+        [Authorize(Policy = "AdminOnly")]
         [HttpGet]
         public async Task<IActionResult> CreaProdotto()
         {
@@ -38,8 +28,7 @@ namespace Progetto_Pizzeria.Controllers
             return View(viewModel);
         }
 
-
-
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreaProdotto(ProdottoViewModel model)
@@ -63,26 +52,16 @@ namespace Progetto_Pizzeria.Controllers
                 return RedirectToAction(nameof(GetAllProdotti));
             }
 
-            // Se c'è un errore, ricarica la lista degli ingredienti
             model.Ingredienti = await _ctx.Ingredienti.ToListAsync();
             return View(model);
         }
 
-
         public async Task<IActionResult> GetAllProdotti()
         {
             var prodotti = await _ctx.Prodotti
-                .Include(p => p.Ingredienti) // Include gli ingredienti associati
+                .Include(p => p.Ingredienti)
                 .ToListAsync();
             return View(prodotti);
         }
-
     }
-
 }
-
-
-
-
-    
-
