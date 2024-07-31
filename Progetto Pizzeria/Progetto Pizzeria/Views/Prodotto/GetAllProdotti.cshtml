@@ -23,6 +23,10 @@
                                 <li>@ingrediente.Nome</li>
                             }
                         </ul>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control text-center quantity-input" value="1" min="1" id="quantita_@prodotto.Id">
+                        </div>
+                        <button class="btn btn-primary" onclick="aggiungiProdotto(@prodotto.Id)">Aggiungi</button>
                     </div>
                 </div>
             </div>
@@ -32,4 +36,42 @@
 else
 {
     <div class="alert alert-warning">Nessun dato</div>
+}
+
+@section Scripts {
+    <script>
+        function aggiungiProdotto(prodottoId) {
+            const quantita = document.getElementById('quantita_' + prodottoId).value;
+
+            if (quantita <= 0) {
+                alert('La quantità deve essere maggiore di zero.');
+                return;
+            }
+
+            fetch('/Ordine/AggiungiProdotto', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prodottoId: prodottoId, quantita: quantita })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(error => {
+                            throw new Error(error.message || 'Errore durante l\'aggiunta del prodotto all\'ordine.');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('Prodotto aggiunto all\'ordine.');
+                })
+                .catch(error => {
+                    console.error('Errore:', error);
+                    alert('Si è verificato un problema: ' + error.message);
+                });
+        }
+
+    </script>
+}
 }

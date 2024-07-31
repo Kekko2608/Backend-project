@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Progetto_Pizzeria.Models;
 
 namespace Progetto_Pizzeria.Context
@@ -17,29 +16,64 @@ namespace Progetto_Pizzeria.Context
         public DataContext(DbContextOptions<DataContext> opt) : base(opt) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=localhost\\sqlexpress;Initial Catalog=Pizzeria;Integrated Security=True;TrustServerCertificate=True");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data Source=localhost\\sqlexpress;Initial Catalog=Pizzeria;Integrated Security=True;TrustServerCertificate=True");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Role>(entity => {
-                entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC0797369540");
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_Roles");
             });
 
-            modelBuilder.Entity<User>(entity => {
-                entity.HasKey(e => e.Id).HasName("PK__Users__3214EC0798BFEE9C");
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_Users");
             });
 
-            modelBuilder.Entity<UserRole>(entity => {
-                entity.HasKey(e => e.Id).HasName("PK__UserRol__3214EC07D639C897");
+            modelBuilder.Entity<UserRole>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_UserRoles");
 
-                entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.UserRoles)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_UserRoles_Roles");
 
-                entity.HasOne(d => d.User).WithMany(p => p.UserRoles)
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.UserRoles)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_UserRoles_Users");
+            });
+
+            modelBuilder.Entity<Ordine>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_Ordini");
+
+                entity.HasMany(o => o.ProdottiOrdinati)
+                    .WithOne(po => po.Ordine)
+                    .HasForeignKey(po => po.OrdineId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            modelBuilder.Entity<ProdottoOrdinato>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_ProdottiOrdinati");
+
+                entity.HasOne(po => po.Prodotto)
+                    .WithMany() // Assumendo che Prodotto non abbia una collezione di ProdottoOrdinato
+                    .HasForeignKey(po => po.ProdottoId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(po => po.Ordine)
+                    .WithMany(o => o.ProdottiOrdinati)
+                    .HasForeignKey(po => po.OrdineId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             OnModelCreatingPartial(modelBuilder);
