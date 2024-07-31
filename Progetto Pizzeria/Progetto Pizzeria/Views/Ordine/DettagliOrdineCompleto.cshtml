@@ -1,0 +1,63 @@
+﻿
+@{
+}
+@model Progetto_Pizzeria.Models.Ordine
+
+<h1>Dettagli Ordine Completo</h1>
+
+@if (Model == null)
+{
+    <div class="alert alert-warning">Nessun ordine trovato.</div>
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Ordine #@Model.Id</h5>
+            <p><strong>Indirizzo di Consegna:</strong> @Model.Indirizzo</p>
+            <p><strong>Note Aggiuntive:</strong> @Model.Noteaggiuntive</p>
+            <p><strong>Stato:</strong> @(Model.Evaso ? "Evaso" : "In Attesa")</p>
+
+            <h4>Prodotti Ordinati</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome Prodotto</th>
+                        <th>Quantità</th>
+                        <th>Prezzo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.ProdottiOrdinati != null && Model.ProdottiOrdinati.Any())
+                    {
+                        @foreach (var prodottoOrdinato in Model.ProdottiOrdinati)
+                        {
+                            <tr>
+                                <td>@prodottoOrdinato.Prodotto.Nome</td>
+                                <td>@prodottoOrdinato.Quantita</td>
+                                <td>@(prodottoOrdinato.Prodotto.Prezzo * prodottoOrdinato.Quantita)</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center">Nessun prodotto ordinato</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Calcolo del Totale -->
+            <div class="d-flex justify-content-end">
+                <h5 class="mr-3">
+                    Totale:
+                    @(
+                        Model.ProdottiOrdinati.Sum(po => po.Prodotto.Prezzo * po.Quantita)
+                        )
+                    €
+                </h5>
+            </div>
+        </div>
+    </div>
+}

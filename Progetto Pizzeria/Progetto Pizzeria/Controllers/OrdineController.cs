@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Progetto_Pizzeria.Context;
 using Progetto_Pizzeria.Models;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Progetto_Pizzeria.Controllers
 {
@@ -108,20 +107,7 @@ namespace Progetto_Pizzeria.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfermaOrdine(int ordineId, string indirizzo, string noteAggiuntive)
         {
-            if (string.IsNullOrWhiteSpace(indirizzo))
-            {
-                return BadRequest("L'indirizzo è obbligatorio.");
-            }
-
-            var userEmail = User.Identity.Name;
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == userEmail);
-
-            if (user == null)
-            {
-                return BadRequest("Utente non trovato.");
-            }
-
-            var ordine = await _context.Ordini.SingleOrDefaultAsync(o => o.Id == ordineId && o.UserId == user.Id && !o.Evaso);
+            var ordine = await _context.Ordini.SingleOrDefaultAsync(o => o.Id == ordineId);
 
             if (ordine == null)
             {
@@ -130,13 +116,59 @@ namespace Progetto_Pizzeria.Controllers
 
             ordine.Indirizzo = indirizzo;
             ordine.Noteaggiuntive = noteAggiuntive;
-            ordine.Evaso = true; // Imposta lo stato dell'ordine come "evaso"
+            ordine.Evaso = false; // Imposta lo stato su "In Attesa" quando si conferma l'ordine
 
-            _context.Ordini.Update(ordine);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Dettagli", new { id = ordineId });
+            return RedirectToAction("Dettagli");
         }
+
+        [Authorize(Policy = "AdminOnly")]
+        [HttpPost]
+        public async Task<IActionResult> EvadiOrdine(int ordineId)
+        {
+            var ordine = await _context.Ordini.SingleOrDefaultAsync(o => o.Id == ordineId);
+
+            if (ordine == null)
+            {
+                return NotFound("Ordine non trovato.");
+            }
+
+            ordine.Evaso = true; // Imposta lo stato su "Evaso"
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("ListaOrdini");
+        }
+
+        [Authorize(Policy = "AdminOnly")]
+        public async Task<IActionResult> ListaOrdini()
+        {
+            var ordini = await _context.Ordini
+                .Include(o => o.ProdottiOrdinati)
+                .ThenInclude(po => po.Prodotto) // Assicurati di includere i dettagli del prodotto
+                .ToListAsync();
+
+            return View(ordini);
+        }
+
+        [Authorize(Policy = "AdminOnly")]
+        [HttpGet]
+        public async Task<IActionResult> DettagliOrdineCompleto(int id)
+        {
+            var ordine = await _context.Ordini
+                .Include(o => o.ProdottiOrdinati)
+                    .ThenInclude(po => po.Prodotto) // Includi i dettagli del prodotto
+                .SingleOrDefaultAsync(o => o.Id == id);
+
+            if (ordine == null)
+            {
+                return NotFound("Ordine non trovato.");
+            }
+
+            return View(ordine);
+        }
+
 
     }
 }

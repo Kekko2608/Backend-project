@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Progetto_Pizzeria.Models.Ordine>
+
+<h1>Lista Ordini</h1>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning">Nessun ordine trovato.</div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Ordine</th>
+                <th>Indirizzo</th>
+                <th>Note Aggiuntive</th>
+                <th>Stato</th>
+                <th>Dettagli</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ordine in Model)
+            {
+                <tr>
+                    <td>@ordine.Id</td>
+                    <td>@ordine.Indirizzo</td>
+                    <td>@ordine.Noteaggiuntive</td>
+                    <td>@(ordine.Evaso ? "Evaso" : "In Attesa")</td>
+                    <td>
+                        <a href="@Url.Action("DettagliOrdineCompleto", "Ordine", new { id = ordine.Id })" class="btn btn-info btn-sm">Visualizza</a>
+                    </td>
+                    <td>
+                        @if (!ordine.Evaso)
+                        {
+                            <form method="post" action="@Url.Action("EvadiOrdine", "Ordine")" style="display:inline;">
+                                <input type="hidden" name="ordineId" value="@ordine.Id" />
+                                <button type="submit" class="btn btn-success btn-sm">Evadi</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
