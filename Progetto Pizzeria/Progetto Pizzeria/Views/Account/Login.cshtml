@@ -1,0 +1,21 @@
+﻿﻿
+
+
+@model LoginModel
+
+<div class="text-center">Login</div>
+
+<form asp-action="Login">
+    @Html.AntiForgeryToken()
+    <div class="input-group">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="input-group">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    <div class="input-group mt-2">
+        <button class="btn btn-primary">Accedi</button>
+    </div>
+</form>
