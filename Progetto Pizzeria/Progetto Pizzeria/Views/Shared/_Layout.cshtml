@@ -25,19 +25,24 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Prodotto" asp-action="GetAllProdotti">Menù</a>
                         </li>
-                       
                         @if (User.Identity.IsAuthenticated)
+                        {
+                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Ordine" asp-action="Dettagli">Ordine</a>
+                            </li>
+
+                        }
+
+                        @if (User.IsInRole("Amministratore"))
                         {
                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Prodotto" asp-action="CreaProdotto">Crea Prodotto</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Ordine" asp-action="Dettagli">Ordine</a>
-                            </li>
+                           
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Ordine" asp-action="ListaOrdini">Lista Ordini</a>
                             </li>
-                           
+                          
                         }
                     </ul>
                     <ul class="navbar-nav ms-auto">
