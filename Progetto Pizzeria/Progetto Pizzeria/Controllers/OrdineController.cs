@@ -126,8 +126,12 @@ namespace Progetto_Pizzeria.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Dettagli");
+            TempData["SuccessMessage"] = "Ordine inviato.";
+
+            // Corretto: specifica il nome del controller e l'azione senza la barra inclinata
+            return RedirectToAction("GetAllProdotti", "Prodotto");
         }
+
 
         [Authorize(Policy = "AdminOnly")]
         [HttpPost]
