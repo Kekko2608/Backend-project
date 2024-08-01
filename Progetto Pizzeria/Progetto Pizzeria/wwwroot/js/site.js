@@ -1,4 +1,36 @@
 ﻿
+// aggiunta all' ordine + quantità
+$(document).ready(function () {
+    function aggiungiProdotto(prodottoId) {
+        var quantita = $('#quantita_' + prodottoId).val();
+
+        if (quantita <= 0) {
+            alert('La quantità deve essere maggiore di zero.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Ordine/AggiungiProdotto',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ prodottoId: prodottoId, quantita: quantita }),
+            success: function (data) {
+                alert('Prodotto aggiunto all\'ordine.');
+            },
+            error: function (xhr, status, error) {
+                console.error('Errore:', error);
+                alert('Si è verificato un problema: ' + error.message);
+            }
+        });
+    }
+
+    // Attacca l'handler click ai pulsanti
+    $('.btn-add').click(function () {
+        var prodottoId = $(this).data('prodotto-id');
+        aggiungiProdotto(prodottoId);
+    });
+});
+
 
 
 $(document).ready(function () {
