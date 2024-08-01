@@ -122,13 +122,12 @@ namespace Progetto_Pizzeria.Controllers
 
             ordine.Indirizzo = indirizzo;
             ordine.Noteaggiuntive = noteAggiuntive;
-            ordine.Evaso = false; // Imposta lo stato su "In Attesa" quando si conferma l'ordine
+            ordine.Evaso = false; 
 
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Ordine inviato.";
 
-            // Corretto: specifica il nome del controller e l'azione senza la barra inclinata
             return RedirectToAction("GetAllProdotti", "Prodotto");
         }
 
