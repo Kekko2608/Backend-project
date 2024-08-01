@@ -66,7 +66,7 @@ namespace Progetto_Pizzeria.Context
                 entity.HasKey(e => e.Id).HasName("PK_ProdottiOrdinati");
 
                 entity.HasOne(po => po.Prodotto)
-                    .WithMany() // Assumendo che Prodotto non abbia una collezione di ProdottoOrdinato
+                    .WithMany() 
                     .HasForeignKey(po => po.ProdottoId)
                     .OnDelete(DeleteBehavior.Cascade);
 

@@ -59,8 +59,8 @@ namespace Progetto_Pizzeria.Controllers
                 var prodottoOrdinato = new ProdottoOrdinato
                 {
                     Quantita = model.Quantita,
-                    OrdineId = ordine.Id,  // Associa l'ordine
-                    ProdottoId = model.ProdottoId  // Associa il prodotto
+                    OrdineId = ordine.Id,  
+                    ProdottoId = model.ProdottoId  
                 };
 
                 ordine.ProdottiOrdinati.Add(prodottoOrdinato);
@@ -70,7 +70,7 @@ namespace Progetto_Pizzeria.Controllers
             }
             catch (Exception ex)
             {
-                // Log dell'errore
+               
                 Console.Error.WriteLine(ex.ToString());
                 return StatusCode(500, new { message = "Si è verificato un problema durante l'aggiunta del prodotto all'ordine." });
             }
@@ -91,7 +91,7 @@ namespace Progetto_Pizzeria.Controllers
 
             var ordine = await _context.Ordini
                 .Include(o => o.ProdottiOrdinati)
-                    .ThenInclude(po => po.Prodotto)  // Assicurati di includere 'Prodotto'
+                    .ThenInclude(po => po.Prodotto)  
                 .SingleOrDefaultAsync(o => o.UserId == user.Id && !o.Evaso);
 
             if (ordine == null)
@@ -146,7 +146,7 @@ namespace Progetto_Pizzeria.Controllers
         {
             var ordini = await _context.Ordini
                 .Include(o => o.ProdottiOrdinati)
-                .ThenInclude(po => po.Prodotto) // Assicurati di includere i dettagli del prodotto
+                .ThenInclude(po => po.Prodotto) 
                 .ToListAsync();
 
             return View(ordini);
@@ -158,7 +158,7 @@ namespace Progetto_Pizzeria.Controllers
         {
             var ordine = await _context.Ordini
                 .Include(o => o.ProdottiOrdinati)
-                    .ThenInclude(po => po.Prodotto) // Includi i dettagli del prodotto
+                    .ThenInclude(po => po.Prodotto) 
                 .SingleOrDefaultAsync(o => o.Id == id);
 
             if (ordine == null)
@@ -168,6 +168,42 @@ namespace Progetto_Pizzeria.Controllers
 
             return View(ordine);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> RimuoviProdotto(int prodottoOrdinatoId)
+        {
+            try
+            {
+                // Trova il prodotto ordinato da eliminare
+                var prodottoOrdinato = await _context.Prodottiordinati
+                    .Include(po => po.Ordine) // Include per controllare l'ordine associato
+                    .SingleOrDefaultAsync(po => po.Id == prodottoOrdinatoId);
+
+                if (prodottoOrdinato == null)
+                {
+                    return NotFound("Prodotto ordinato non trovato.");
+                }
+
+                // Verifica che l'ordine non sia già evaso
+                if (prodottoOrdinato.Ordine.Evaso)
+                {
+                    return BadRequest("Non è possibile modificare un ordine già evaso.");
+                }
+
+                // Rimuovo il prodotto ordinato dall'ordine
+                _context.Prodottiordinati.Remove(prodottoOrdinato);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Dettagli", new { id = prodottoOrdinato.OrdineId });
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.ToString());
+                return StatusCode(500, new { message = "Si è verificato un problema durante la rimozione del prodotto dall'ordine." });
+            }
+        }
+
 
 
     }
