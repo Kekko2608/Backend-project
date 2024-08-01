@@ -27,6 +27,4 @@ namespace Progetto_Pizzeria.Models
      
     }
 
-   
-    
 }
