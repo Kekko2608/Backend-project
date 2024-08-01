@@ -45,6 +45,7 @@ namespace Progetto_Pizzeria.Controllers
                         Indirizzo = "Indirizzo da specificare",
                         Noteaggiuntive = "",
                         Evaso = false,
+                        DataOrdine = DateTime.Now
                     };
                     _context.Ordini.Add(ordine);
                     await _context.SaveChangesAsync();
@@ -89,18 +90,23 @@ namespace Progetto_Pizzeria.Controllers
                 return NotFound("Utente non trovato.");
             }
 
-            var ordine = await _context.Ordini
+            var ordini = await _context.Ordini
                 .Include(o => o.ProdottiOrdinati)
-                    .ThenInclude(po => po.Prodotto)  
-                .SingleOrDefaultAsync(o => o.UserId == user.Id && !o.Evaso);
+                    .ThenInclude(po => po.Prodotto)
+                .Where(o => o.UserId == user.Id && !o.Evaso)
+                .ToListAsync();
 
-            if (ordine == null)
+            if (!ordini.Any())
             {
-                return NotFound("Ordine non trovato.");
+                return NotFound("Ordini non trovati.");
             }
 
-            return View(ordine);
+            // Se desideri mostrare solo il primo ordine non evaso
+            var primoOrdine = ordini.First();
+
+            return View(primoOrdine);
         }
+
 
 
 
@@ -204,9 +210,32 @@ namespace Progetto_Pizzeria.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> NumeroOrdiniEvasi()
+        {
+            var totaleEvasi = await _context.Ordini.CountAsync(o => o.Evaso);
+            return Ok(totaleEvasi);
+        }
 
+        [HttpGet]
+        public async Task<IActionResult> TotaleIncassatoPerGiornata(string giorno)
+        {
+            if (DateTime.TryParse(giorno, out var data))
+            {
+                var totaleIncassato = await _context.Ordini
+                    .Where(o => o.Evaso && o.DataOrdine.Date == data.Date)
+                    .SelectMany(o => o.ProdottiOrdinati)
+                    .SumAsync(po => po.Prodotto.Prezzo * po.Quantita);
 
+                return Ok(totaleIncassato);
+            }
+
+            return BadRequest("Data non valida.");
+        }
     }
 }
+
+
+
 
 
