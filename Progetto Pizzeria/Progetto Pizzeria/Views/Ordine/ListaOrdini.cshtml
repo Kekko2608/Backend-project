@@ -8,7 +8,7 @@
 }
 else
 {
-    <table class="table">
+    <table class="table text-white">
         <thead>
             <tr>
                 <th>ID Ordine</th>
@@ -28,14 +28,14 @@ else
                     <td>@ordine.Noteaggiuntive</td>
                     <td>@(ordine.Evaso ? "Evaso" : "In Attesa")</td>
                     <td>
-                        <a href="@Url.Action("DettagliOrdineCompleto", "Ordine", new { id = ordine.Id })" class="btn btn-info btn-sm">Visualizza</a>
+                        <a href="@Url.Action("DettagliOrdineCompleto", "Ordine", new { id = ordine.Id })" class="btn btn-sm">Visualizza</a>
                     </td>
                     <td>
                         @if (!ordine.Evaso)
                         {
                             <form method="post" action="@Url.Action("EvadiOrdine", "Ordine")" style="display:inline;">
                                 <input type="hidden" name="ordineId" value="@ordine.Id" />
-                                <button type="submit" class="btn btn-success btn-sm">Evadi</button>
+                                <button type="submit" class="btn text-black btn-sm">Evadi</button>
                             </form>
                         }
                     </td>
@@ -48,8 +48,8 @@ else
 <!-- Bottoni per azioni amministrative -->
 <div class="mt-4">
     <!-- Bottone 1: Numero totale ordini evasi -->
-    <button id="btnTotaleOrdiniEvasi" class="btn btn-primary me-4">Totale Ordini Evasi</button>
+    <button id="btnTotaleOrdiniEvasi" class="btn text-black me-4">Totale Ordini Evasi</button>
 
     <!-- Bottone 2: Totale incassato per una giornata -->
-    <button id="btnTotaleIncassato" class="btn btn-secondary">Totale Incassato</button>
+    <button id="btnTotaleIncassato" class="btn text-black">Totale Incassato</button>
 </div>

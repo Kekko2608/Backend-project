@@ -8,7 +8,7 @@
 }
 else
 {
-    <div class="card">
+    <div class="card text-black">
         <div class="card-body">
             <h5 class="card-title">Ordine #@Model.Id</h5>
             <p><strong>Note Aggiuntive:</strong> @Model.Noteaggiuntive</p>
@@ -36,7 +36,7 @@ else
                                 <td>
                                     <form method="post" action="@Url.Action("RimuoviProdotto", "Ordine")" style="display:inline;">
                                         <input type="hidden" name="prodottoOrdinatoId" value="@prodottoOrdinato.Id" />
-                                        <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
+                                        <button type="submit" class="btn btn-sm">Elimina</button>
                                     </form>
                                 </td>
                             </tr>
@@ -74,7 +74,7 @@ else
                         <label for="noteAggiuntive">Note Aggiuntive:</label>
                         <textarea class="form-control" id="noteAggiuntive" name="noteAggiuntive"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Conferma Ordine</button>
+                    <button type="submit" class="btn text-black mt-3">Conferma Ordine</button>
                 </form>
             }
             else
