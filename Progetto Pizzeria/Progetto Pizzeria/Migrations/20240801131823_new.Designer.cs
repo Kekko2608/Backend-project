@@ -12,8 +12,8 @@ using Progetto_Pizzeria.Context;
 namespace Progetto_Pizzeria.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240731101527_Roles")]
-    partial class Roles
+    [Migration("20240801131823_new")]
+    partial class @new
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,6 +66,9 @@ namespace Progetto_Pizzeria.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DataOrdine")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("Evaso")
                         .HasColumnType("bit");
 
@@ -80,7 +83,8 @@ namespace Progetto_Pizzeria.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_Ordini");
 
                     b.HasIndex("UserId");
 
@@ -124,15 +128,21 @@ namespace Progetto_Pizzeria.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("OrdineId")
+                    b.Property<int>("OrdineId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProdottoId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantita")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ProdottiOrdinati");
 
                     b.HasIndex("OrdineId");
+
+                    b.HasIndex("ProdottoId");
 
                     b.ToTable("Prodottiordinati");
                 });
@@ -151,7 +161,7 @@ namespace Progetto_Pizzeria.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id")
-                        .HasName("PK__Roles__3214EC0797369540");
+                        .HasName("PK_Roles");
 
                     b.HasIndex(new[] { "Name" }, "UQ__Roles__737584F6C7B8672F")
                         .IsUnique();
@@ -182,7 +192,7 @@ namespace Progetto_Pizzeria.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id")
-                        .HasName("PK__Users__3214EC0798BFEE9C");
+                        .HasName("PK_Users");
 
                     b.HasIndex(new[] { "Email" }, "UQ__Users__A9D10534BF460FE6")
                         .IsUnique();
@@ -205,7 +215,7 @@ namespace Progetto_Pizzeria.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id")
-                        .HasName("PK__UserRol__3214EC07D639C897");
+                        .HasName("PK_UserRoles");
 
                     b.HasIndex("RoleId");
 
@@ -243,9 +253,21 @@ namespace Progetto_Pizzeria.Migrations
 
             modelBuilder.Entity("Progetto_Pizzeria.Models.ProdottoOrdinato", b =>
                 {
-                    b.HasOne("Progetto_Pizzeria.Models.Ordine", null)
+                    b.HasOne("Progetto_Pizzeria.Models.Ordine", "Ordine")
                         .WithMany("ProdottiOrdinati")
-                        .HasForeignKey("OrdineId");
+                        .HasForeignKey("OrdineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Progetto_Pizzeria.Models.Prodotto", "Prodotto")
+                        .WithMany()
+                        .HasForeignKey("ProdottoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ordine");
+
+                    b.Navigation("Prodotto");
                 });
 
             modelBuilder.Entity("Progetto_Pizzeria.Models.UserRole", b =>

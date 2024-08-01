@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Progetto_Pizzeria.Migrations
 {
     /// <inheritdoc />
-    public partial class initialManagement : Migration
+    public partial class @new : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,7 +50,7 @@ namespace Progetto_Pizzeria.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__Roles__3214EC0797369540", x => x.Id);
+                    table.PrimaryKey("PK_Roles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,7 +65,7 @@ namespace Progetto_Pizzeria.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__Users__3214EC0798BFEE9C", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,7 +101,8 @@ namespace Progetto_Pizzeria.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Evaso = table.Column<bool>(type: "bit", nullable: false),
                     Indirizzo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Noteaggiuntive = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Noteaggiuntive = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DataOrdine = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -124,7 +126,7 @@ namespace Progetto_Pizzeria.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__UserRol__3214EC07D639C897", x => x.Id);
+                    table.PrimaryKey("PK_UserRoles", x => x.Id);
                     table.ForeignKey(
                         name: "FK_UserRoles_Roles",
                         column: x => x.RoleId,
@@ -144,16 +146,24 @@ namespace Progetto_Pizzeria.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantita = table.Column<int>(type: "int", nullable: false),
-                    OrdineId = table.Column<int>(type: "int", nullable: true)
+                    OrdineId = table.Column<int>(type: "int", nullable: false),
+                    ProdottoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Prodottiordinati", x => x.Id);
+                    table.PrimaryKey("PK_ProdottiOrdinati", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Prodottiordinati_Ordini_OrdineId",
                         column: x => x.OrdineId,
                         principalTable: "Ordini",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Prodottiordinati_Prodotti_ProdottoId",
+                        column: x => x.ProdottoId,
+                        principalTable: "Prodotti",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -170,6 +180,11 @@ namespace Progetto_Pizzeria.Migrations
                 name: "IX_Prodottiordinati_OrdineId",
                 table: "Prodottiordinati",
                 column: "OrdineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Prodottiordinati_ProdottoId",
+                table: "Prodottiordinati",
+                column: "ProdottoId");
 
             migrationBuilder.CreateIndex(
                 name: "UQ__Roles__737584F6C7B8672F",
@@ -211,10 +226,10 @@ namespace Progetto_Pizzeria.Migrations
                 name: "Ingredienti");
 
             migrationBuilder.DropTable(
-                name: "Prodotti");
+                name: "Ordini");
 
             migrationBuilder.DropTable(
-                name: "Ordini");
+                name: "Prodotti");
 
             migrationBuilder.DropTable(
                 name: "Roles");

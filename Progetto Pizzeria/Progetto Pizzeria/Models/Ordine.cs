@@ -21,6 +21,8 @@ namespace Progetto_Pizzeria.Models
 
         public string Noteaggiuntive { get; set; }
 
+        public DateTime DataOrdine { get; set; }
+
         [Required]
         public List<ProdottoOrdinato> ProdottiOrdinati { get; set; } = new();
     }
