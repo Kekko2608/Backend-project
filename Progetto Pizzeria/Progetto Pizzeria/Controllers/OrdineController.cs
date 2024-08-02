@@ -132,6 +132,7 @@ namespace Progetto_Pizzeria.Controllers
         }
 
 
+
         [Authorize(Policy = "AdminOnly")]
         [HttpPost]
         public async Task<IActionResult> EvadiOrdine(int ordineId)
@@ -150,6 +151,8 @@ namespace Progetto_Pizzeria.Controllers
             return RedirectToAction("ListaOrdini");
         }
 
+
+
         [Authorize(Policy = "AdminOnly")]
         public async Task<IActionResult> ListaOrdini()
         {
@@ -160,6 +163,8 @@ namespace Progetto_Pizzeria.Controllers
 
             return View(ordini);
         }
+
+
 
         [Authorize(Policy = "AdminOnly")]
         [HttpGet]
@@ -213,12 +218,17 @@ namespace Progetto_Pizzeria.Controllers
             }
         }
 
+
+
         [HttpGet]
         public async Task<IActionResult> NumeroOrdiniEvasi()
         {
             var totaleEvasi = await _context.Ordini.CountAsync(o => o.Evaso);
             return Ok(totaleEvasi);
         }
+
+
+
 
         [HttpGet]
         public async Task<IActionResult> TotaleIncassatoPerGiornata(string giorno)

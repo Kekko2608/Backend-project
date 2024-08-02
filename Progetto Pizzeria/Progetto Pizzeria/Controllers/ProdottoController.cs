@@ -16,6 +16,8 @@ namespace Progetto_Pizzeria.Controllers
             _ctx = dataContext;
         }
 
+
+
         [Authorize(Policy = "AdminOnly")]
         [HttpGet]
         public async Task<IActionResult> CreaProdotto()
@@ -27,6 +29,8 @@ namespace Progetto_Pizzeria.Controllers
 
             return View(viewModel);
         }
+
+
 
         [Authorize(Policy = "AdminOnly")]
         [HttpPost]
@@ -55,6 +59,7 @@ namespace Progetto_Pizzeria.Controllers
             model.Ingredienti = await _ctx.Ingredienti.ToListAsync();
             return View(model);
         }
+
 
         public async Task<IActionResult> GetAllProdotti()
         {

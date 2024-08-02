@@ -24,6 +24,8 @@ namespace Progetto_Pizzeria.Controllers
             return View();
         }
 
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
@@ -62,12 +64,15 @@ namespace Progetto_Pizzeria.Controllers
             return View(model);
         }
 
+
         public IActionResult Register()
         {
             var roles = _ctx.Roles.ToList();
             ViewBag.Roles = roles;
             return View();
         }
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -106,6 +111,8 @@ namespace Progetto_Pizzeria.Controllers
 
             return View(model);
         }
+
+
 
         public async Task<IActionResult> Logout()
         {
